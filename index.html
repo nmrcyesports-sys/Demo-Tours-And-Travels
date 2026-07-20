@@ -9,8 +9,8 @@
         
         :root {
             --primary: #0f172a; 
-            --accent: #002970; 
-            --accent-light: #00baf2; 
+            --accent: #002970; /* Deep Blue */
+            --accent-light: #00baf2; /* Light Blue */
             --bg-color: #f8fafc;
             --card-bg: #ffffff;
             --text-main: #0f172a;
@@ -21,7 +21,7 @@
         }
         
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; -webkit-tap-highlight-color: transparent; }
-        body { background: var(--bg-color); color: var(--text-main); padding-bottom: 100px; }
+        body { background: var(--bg-color); color: var(--text-main); padding-bottom: 110px; }
         
         .app-container { max-width: 480px; margin: 0 auto; min-height: 100vh; background: var(--bg-color); position: relative; box-shadow: 0 0 40px rgba(0,0,0,0.08); overflow-x: hidden; }
         
@@ -30,21 +30,21 @@
         .title-sm { font-size: 14px; font-weight: 500; color: var(--text-muted); }
         
         .p-20 { padding: 20px; }
-        .view-section { display: none; animation: fadeUp 0.3s ease; }
+        .view-section { display: none; animation: fadeUp 0.4s ease; }
         .view-section.active { display: block; }
         @keyframes fadeUp { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
         
-        /* FIXED HEADER */
-        .header { display: flex; justify-content: space-between; align-items: center; padding: 18px 20px; background: rgba(255,255,255,0.98); backdrop-filter: blur(15px); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid var(--border); box-shadow: 0 4px 20px rgba(0,0,0,0.02); }
+        /* HEADER */
+        .header { display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; background: rgba(255,255,255,0.95); backdrop-filter: blur(15px); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid var(--border); box-shadow: 0 4px 20px rgba(0,0,0,0.02); }
         .logo { font-size: 22px; font-weight: 800; color: var(--primary); display: flex; align-items: center; gap: 8px; }
         .user-pill { font-size: 12px; font-weight: 700; background: var(--bg-color); color: var(--accent); padding: 8px 16px; border-radius: 20px; border: 1px solid var(--border); transition: 0.3s; }
         
-        input, select, textarea { width: 100%; padding: 16px; margin: 8px 0; border-radius: 12px; border: 1.5px solid var(--border); background: var(--card-bg); font-size: 15px; font-weight: 500; outline: none; transition: 0.3s ease; }
+        input, select, textarea { width: 100%; padding: 16px; margin: 8px 0; border-radius: 14px; border: 1.5px solid var(--border); background: var(--card-bg); font-size: 15px; font-weight: 500; outline: none; transition: 0.3s ease; }
         input:focus, textarea:focus { border-color: var(--accent-light); box-shadow: 0 0 0 4px rgba(0, 186, 242, 0.1); }
         
-        .btn { padding: 16px; border-radius: 12px; border: none; font-weight: 700; cursor: pointer; width: 100%; font-size: 15px; transition: 0.2s ease; display: flex; justify-content: center; align-items: center; gap: 8px; }
+        .btn { padding: 16px; border-radius: 14px; border: none; font-weight: 700; cursor: pointer; width: 100%; font-size: 15px; transition: 0.2s ease; display: flex; justify-content: center; align-items: center; gap: 8px; }
         .btn-primary { background: var(--primary); color: white; }
-        .btn-paytm { background: var(--accent); color: white; box-shadow: 0 8px 20px rgba(0, 41, 112, 0.2); }
+        .btn-accent { background: var(--accent); color: white; box-shadow: 0 8px 20px rgba(0, 41, 112, 0.15); }
         .btn-success { background: var(--success); color: white; }
         .btn-danger { background: var(--danger); color: white; }
         .btn-outline { background: transparent; border: 1.5px solid var(--border); color: var(--text-main); }
@@ -52,40 +52,68 @@
         
         .card { background: var(--card-bg); border-radius: 20px; padding: 22px; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.03); border: 1px solid var(--border); }
         
-        /* PREMIUM TOUR CARDS */
+        /* TOUR CARDS */
         .tour-card { background: var(--card-bg); border-radius: 24px; overflow: hidden; margin-bottom: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.06); cursor: pointer; border: 1px solid var(--border); transition: 0.3s; }
         .tour-img { width: 100%; height: 240px; object-fit: cover; background-color: #e2e8f0; }
         .tour-info { padding: 20px; }
-        .tour-loc { font-size: 12px; font-weight: 700; color: var(--accent-light); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px; }
+        .tour-loc { font-size: 12px; font-weight: 700; color: var(--accent-light); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
         
-        /* AUTH & GATEWAY */
+        /* AUTH & MODALS */
         .auth-step { display: none; }
         .auth-step.active { display: block; animation: fadeUp 0.3s ease; }
-        
-        .paytm-overlay { position: fixed; inset: 0; background: var(--card-bg); z-index: 999; display: none; flex-direction: column; animation: fadeUp 0.3s ease; }
-        .paytm-header { background: var(--accent); color: white; padding: 18px; text-align: center; font-size: 16px; font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 10px; }
-        
-        .verify-box { display: none; flex-direction: column; align-items: center; justify-content: center; height: 100%; background: var(--card-bg); z-index: 1000; position: absolute; inset: 0; }
-        .spinner-blue { width: 45px; height: 45px; border: 4px solid var(--border); border-top: 4px solid var(--accent-light); border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 20px; }
-        
-        .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); z-index: 1000; display: none; justify-content: center; align-items: center; padding: 20px; }
+        .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); backdrop-filter: blur(5px); z-index: 1000; display: none; justify-content: center; align-items: center; padding: 20px; }
         .modal-content { background: var(--card-bg); width: 100%; border-radius: 24px; padding: 25px; animation: fadeUp 0.3s ease; }
         
         #loader { display: none; position: fixed; inset: 0; background: rgba(255,255,255,0.95); z-index: 1000; justify-content: center; align-items: center; flex-direction: column; }
-        .spinner { width: 45px; height: 45px; border: 4px solid var(--border); border-top: 4px solid var(--primary); border-radius: 50%; animation: spin 1s linear infinite; }
+        .spinner { width: 45px; height: 45px; border: 4px solid var(--border); border-top: 4px solid var(--accent); border-radius: 50%; animation: spin 1s linear infinite; }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
         
-        /* FIXED BOTTOM NAVIGATION */
-        .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; margin: 0 auto; width: 100%; max-width: 480px; background: rgba(255,255,255,0.98); backdrop-filter: blur(15px); border-top: 1px solid var(--border); display: flex; justify-content: space-around; padding: 12px 0 25px; z-index: 200; box-shadow: 0 -4px 20px rgba(0,0,0,0.05); }
-        .nav-item { display: flex; flex-direction: column; align-items: center; color: var(--text-muted); font-size: 11px; font-weight: 700; gap: 4px; cursor: pointer; transition: 0.2s; width: 33%; }
-        .nav-item.active { color: var(--accent); }
-        .nav-icon { width: 24px; height: 24px; fill: currentColor; margin-bottom: 2px; }
+        /* ENHANCED ADMIN DASHBOARD */
+        .admin-stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px; }
+        .stat-card { padding: 20px; border-radius: 20px; display: flex; flex-direction: column; gap: 10px; position: relative; overflow: hidden; }
+        .stat-card.blue { background: linear-gradient(135deg, #002970, #00153f); color: white; box-shadow: 0 10px 25px rgba(0, 41, 112, 0.2); }
+        .stat-card.light { background: #ffffff; border: 1px solid var(--border); color: var(--primary); box-shadow: 0 4px 15px rgba(0,0,0,0.03); }
+        .stat-label { font-size: 11px; font-weight: 700; opacity: 0.8; letter-spacing: 1px; text-transform: uppercase; }
+        .stat-val { font-size: 26px; font-weight: 800; }
+        
+        .admin-action-row { display: flex; gap: 10px; margin-bottom: 20px; }
+        .action-btn { flex: 1; padding: 15px; border-radius: 16px; font-weight: 700; font-size: 13px; text-align: center; cursor: pointer; transition: 0.2s; border: none; display: flex; flex-direction: column; align-items: center; gap: 5px; }
+        .action-btn.primary { background: rgba(0, 186, 242, 0.1); color: var(--accent); border: 1px solid rgba(0, 186, 242, 0.3); }
+        .action-btn.danger { background: rgba(239, 68, 68, 0.1); color: var(--danger); border: 1px solid rgba(239, 68, 68, 0.3); }
+
+        .booking-item { border: 1px solid var(--border); padding: 16px; border-radius: 16px; margin-bottom: 15px; background: var(--card-bg); transition: 0.2s; }
+        .booking-item:hover { border-color: var(--accent-light); box-shadow: 0 5px 15px rgba(0, 186, 242, 0.05); }
+
+        /* 🔥 PREMIUM FLOATING BOTTOM NAVIGATION 🔥 */
+        .floating-nav { 
+            position: fixed; bottom: 20px; left: 20px; right: 20px; margin: 0 auto; max-width: 440px; 
+            background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(20px); 
+            border-radius: 28px; box-shadow: 0 10px 40px rgba(0,0,0,0.12); 
+            display: flex; justify-content: space-around; align-items: center; padding: 10px 15px; z-index: 200; 
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        .nav-item { 
+            display: flex; align-items: center; gap: 8px; color: var(--text-muted); 
+            font-size: 13px; font-weight: 700; cursor: pointer; padding: 12px 20px; 
+            border-radius: 20px; transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .nav-item span { display: none; } /* Hide text by default */
+        .nav-item svg { width: 22px; height: 22px; fill: currentColor; transition: 0.3s; }
+        
+        /* Active State Pill Magic */
+        .nav-item.active { background: rgba(0, 41, 112, 0.08); color: var(--accent); }
+        .nav-item.active span { display: block; animation: fadeUp 0.3s ease; }
+        .nav-item.active svg { transform: scale(1.1); }
+        
+        /* PayTM Overlay Specific */
+        .paytm-overlay { position: fixed; inset: 0; background: var(--card-bg); z-index: 999; display: none; flex-direction: column; }
+        .paytm-header { background: var(--accent); color: white; padding: 18px; text-align: center; font-size: 16px; font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 10px; }
     </style>
 </head>
 <body>
 
 <div class="app-container">
-    
-    <div id="loader"><div class="spinner"></div><p style="margin-top: 15px; font-weight: 700; color: var(--primary);" id="loader-text">Processing...</p></div>
+    <div id="loader"><div class="spinner"></div><p style="margin-top: 15px; font-weight: 700; color: var(--primary);">Processing...</p></div>
 
     <!-- HEADER -->
     <div class="header" id="main-header">
@@ -115,7 +143,7 @@
                     <input type="text" id="regName" placeholder="Full Name">
                     <input type="email" id="regEmail" placeholder="Email Address">
                     <input type="password" id="regPass" placeholder="Create Password">
-                    <button class="btn btn-paytm" style="margin-top: 15px;" onclick="processRegister()">REGISTER</button>
+                    <button class="btn btn-accent" style="margin-top: 15px;" onclick="processRegister()">REGISTER</button>
                 </div>
                 <div id="auth-forgot-step" class="auth-step">
                     <p style="font-size: 13px; font-weight: 700; color: var(--danger); margin-bottom: 10px;">Reset Password</p>
@@ -204,8 +232,8 @@
             <button class="btn btn-outline" style="border:none; color:var(--danger);" onclick="closePaytm()">Cancel Payment</button>
         </div>
 
-        <div class="verify-box" id="ptm-verify-ui">
-            <div class="spinner-blue"></div>
+        <div class="verify-box" id="ptm-verify-ui" style="display:none; flex-direction: column; align-items: center; justify-content: center; height: 100%; background: var(--card-bg); z-index: 1000; position: absolute; inset: 0;">
+            <div class="spinner" style="border-top-color: var(--accent-light); margin-bottom: 20px;"></div>
             <h2 style="font-size: 20px; color: var(--accent);" id="verify-text">Connecting to Bank...</h2>
             <p style="font-size: 13px; color: var(--text-muted); margin-top: 10px;">Please do not press back</p>
         </div>
@@ -229,18 +257,38 @@
         </div>
     </div>
 
-    <!-- 8. ADMIN DASHBOARD -->
+    <!-- 8. PRO-LEVEL ADMIN DASHBOARD -->
     <div id="view-admin" class="view-section">
         <div class="p-20">
-            <h2 class="title-lg" style="color: var(--primary);">Admin Portal</h2>
-            <p class="title-sm" style="margin-bottom: 25px;">Manage inventory, revenue, and bookings.</p>
+            <div style="margin-bottom: 25px;">
+                <h2 class="title-lg" style="color: var(--primary); margin-bottom: 4px;">Dashboard</h2>
+                <p class="title-sm">Business Overview & Control</p>
+            </div>
             
-            <div class="stat-grid">
-                <div class="stat-box"><p style="font-size:12px; color:var(--text-muted); font-weight:700;">REVENUE</p><div class="stat-val" id="adm-rev">₹0</div></div>
-                <div class="stat-box"><p style="font-size:12px; color:var(--text-muted); font-weight:700;">BOOKINGS</p><div class="stat-val" id="adm-bks">0</div></div>
+            <!-- Sleek Stat Cards -->
+            <div class="admin-stat-grid">
+                <div class="stat-card blue">
+                    <span class="stat-label">Total Revenue</span>
+                    <div class="stat-val" id="adm-rev">₹0</div>
+                </div>
+                <div class="stat-card light">
+                    <span class="stat-label" style="color: var(--text-muted);">Bookings</span>
+                    <div class="stat-val" style="color: var(--accent);" id="adm-bks">0</div>
+                </div>
             </div>
 
-            <div class="card" id="admin-form-card" style="border: 2px solid var(--accent-light);">
+            <!-- Quick Action Row -->
+            <div class="admin-action-row">
+                <button class="action-btn primary" onclick="showAddTourForm()">
+                    <span style="font-size:20px;">➕</span> Add Package
+                </button>
+                <button class="action-btn danger" onclick="logout()">
+                    <span style="font-size:20px;">🚪</span> Logout
+                </button>
+            </div>
+
+            <!-- Add/Edit Form (Hidden by default to keep UI clean) -->
+            <div class="card" id="admin-form-card" style="border: 2px solid var(--accent-light); display: none;">
                 <h3 style="font-size: 16px; margin-bottom: 15px;" id="adm-form-title">➕ Add New Package</h3>
                 <input type="hidden" id="editTourId">
                 <input type="text" id="nLoc" placeholder="Location (e.g. GOA, INDIA)">
@@ -252,22 +300,22 @@
                 <textarea id="nDesc" rows="3" placeholder="Description..."></textarea>
                 
                 <div style="display:flex; gap:10px; margin-top: 15px;">
-                    <button class="btn btn-paytm" id="btn-save-tour" onclick="saveTour()" style="flex:1;">PUBLISH</button>
-                    <button class="btn btn-outline" id="btn-cancel-edit" onclick="resetAdminForm()" style="display:none; flex:1;">CANCEL</button>
+                    <button class="btn btn-accent" id="btn-save-tour" onclick="saveTour()" style="flex:1;">PUBLISH</button>
+                    <button class="btn btn-outline" id="btn-cancel-edit" onclick="resetAdminForm()" style="flex:1;">CANCEL</button>
                 </div>
             </div>
 
+            <!-- Inventory Manager -->
             <div class="card">
-                <h3 style="font-size: 16px; margin-bottom: 15px;">🛠️ Manage Packages</h3>
+                <h3 style="font-size: 16px; margin-bottom: 15px; display:flex; align-items:center; gap:8px;">📦 Active Packages</h3>
                 <div id="admin-pkg-list"></div>
             </div>
 
-            <div class="card">
-                <h3 style="font-size: 16px; margin-bottom: 15px;">📋 Customer Bookings</h3>
+            <!-- CRM Style Bookings Table -->
+            <div class="card" style="padding: 20px 15px;">
+                <h3 style="font-size: 16px; margin-bottom: 15px; padding-left: 5px; display:flex; align-items:center; gap:8px;">👥 Customer Orders</h3>
                 <div id="admin-bookings-table"></div>
             </div>
-            
-            <button class="btn btn-outline" style="border-color: var(--danger); color: var(--danger);" onclick="logout()">LOGOUT ADMIN</button>
         </div>
     </div>
 
@@ -285,18 +333,18 @@
         </div>
     </div>
 
-    <!-- FIX: MODERN SVG BOTTOM NAVIGATION -->
-    <nav class="bottom-nav" id="bottom-nav" style="display:none;">
+    <!-- 🔥 FLOATING DYNAMIC BOTTOM NAVIGATION 🔥 -->
+    <nav class="floating-nav" id="bottom-nav" style="display:none;">
         <div class="nav-item active" onclick="switchTab('home')" id="nav-home">
-            <svgclass="nav-icon" viewBox="0 0 24 24"><path d="M12 2L2 12h3v8h6v-6h2v6h6v-8h3L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2L2 12h3v8h6v-6h2v6h6v-8h3L12 2z"/></svg>
             <span>Explore</span>
         </div>
         <div class="nav-item" onclick="switchTab('bookings')" id="nav-bookings">
-            <svg class="nav-icon" viewBox="0 0 24 24"><path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58.55 0 1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58.55 0 1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z"/></svg>
             <span>Tickets</span>
         </div>
         <div class="nav-item" onclick="switchTab('profile')" id="nav-profile">
-            <svg class="nav-icon" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
             <span>Profile</span>
         </div>
     </nav>
@@ -308,31 +356,33 @@
     const ADMIN_UPI = "6200871886@axl"; 
     const ADMIN_EMAIL = "luckyrajgupta1994@gmail.com";
 
-    // FIX: Using highly stable image links to prevent white box error.
     const defaultTours = [
         { id: 't1', loc: 'MALDIVES', title: 'Luxury Water Villa', price: 45000, img: 'https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&w=600&q=80', desc: 'Premium water villa with scuba diving.' },
         { id: 't2', loc: 'MANALI, INDIA', title: 'Snow Mountain Adv', price: 12500, img: 'https://images.unsplash.com/photo-1595815771614-ade9d652a65d?auto=format&fit=crop&w=600&q=80', desc: 'Thrilling adventure in the Himalayas.' }
     ];
 
-    let tours = JSON.parse(localStorage.getItem('wl_tours_fix')) || defaultTours;
-    let users = JSON.parse(localStorage.getItem('wl_users_fix')) || [];
-    let bookings = JSON.parse(localStorage.getItem('wl_bookings_fix')) || [];
+    let tours = JSON.parse(localStorage.getItem('wl_tours_ui')) || defaultTours;
+    let users = JSON.parse(localStorage.getItem('wl_users_ui')) || [];
+    let bookings = JSON.parse(localStorage.getItem('wl_bookings_ui')) || [];
     
     let currentUser = null, isAdmin = false, activeTourId = null;
     let tempBooking = { guests: 1, total: 0, date: '' };
     let authTempPhone = '';
     let upiClicked = false;
 
-    if(!localStorage.getItem('wl_tours_fix')) localStorage.setItem('wl_tours_fix', JSON.stringify(tours));
+    if(!localStorage.getItem('wl_tours_ui')) localStorage.setItem('wl_tours_ui', JSON.stringify(tours));
     document.getElementById("bookDate").setAttribute('min', new Date().toISOString().split('T')[0]);
 
-    // FIX: Core UI update function for Header Greeting.
     function updateHeaderGreeting() {
         if (isAdmin) {
-            document.getElementById('user-greeting').innerText = "Admin Panel";
+            document.getElementById('user-greeting').innerText = "Admin Portal";
+            document.getElementById('user-greeting').style.background = "var(--danger)";
+            document.getElementById('user-greeting').style.color = "white";
         } else if (currentUser) {
             let u = users.find(x => x.phone === currentUser);
             document.getElementById('user-greeting').innerText = u ? "Hi, " + u.name.split(' ')[0] : "User";
+            document.getElementById('user-greeting').style.background = "var(--bg-color)";
+            document.getElementById('user-greeting').style.color = "var(--accent)";
         } else {
             document.getElementById('user-greeting').innerText = "Guest";
         }
@@ -364,7 +414,7 @@
                 document.getElementById('main-header').style.display = 'flex'; 
             }
         } 
-        updateHeaderGreeting(); // FIX: Call this every time tab switches
+        updateHeaderGreeting(); 
         window.scrollTo(0,0);
     }
 
@@ -392,21 +442,15 @@
     
     function processLogin() {
         let pass = document.getElementById('authPass').value; if(!pass) return alert("Enter password");
-        if(authTempPhone === ADMIN_PHONE && pass === ADMIN_PASS) { 
-            isAdmin = true; currentUser = null; switchTab('admin'); 
-            return; 
-        }
+        if(authTempPhone === ADMIN_PHONE && pass === ADMIN_PASS) { isAdmin = true; currentUser = null; switchTab('admin'); return; }
         let user = users.find(u => u.phone === authTempPhone);
-        if(user && user.pass === pass) { 
-            currentUser = authTempPhone; isAdmin = false; 
-            switchTab('home'); 
-        } else { alert("Incorrect Password!"); }
+        if(user && user.pass === pass) { currentUser = authTempPhone; isAdmin = false; switchTab('home'); } else { alert("Incorrect Password!"); }
     }
     
     function processRegister() {
         let name = document.getElementById('regName').value, email = document.getElementById('regEmail').value, pass = document.getElementById('regPass').value;
         if(!name || !email || !pass) return alert("Fill all details.");
-        users.push({ phone: authTempPhone, name, email, pass }); localStorage.setItem('wl_users_fix', JSON.stringify(users));
+        users.push({ phone: authTempPhone, name, email, pass }); localStorage.setItem('wl_users_ui', JSON.stringify(users));
         showLoader("Creating Account...", 1000, () => {
             sendBackgroundEmail("🔔 New User Registration", { Name: name, Phone: authTempPhone, Email: email });
             currentUser = authTempPhone; isAdmin = false; switchTab('home');
@@ -417,15 +461,13 @@
         let email = document.getElementById('forgotEmail').value;
         let user = users.find(u => u.phone === authTempPhone && u.email === email);
         if(user) {
-            user.pass = '123456'; localStorage.setItem('wl_users_fix', JSON.stringify(users));
+            user.pass = '123456'; localStorage.setItem('wl_users_ui', JSON.stringify(users));
             let subject = "Password Reset - WanderLust";
             let body = `Dear ${user.name},\n\nYour password has been reset.\nNew Password: 123456\n\nPlease login and change it.`;
             window.location.href = `mailto:${user.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
             alert("Password Reset to '123456'. An email draft has been opened.");
             switchAuthStep('auth-login-step');
-        } else {
-            alert("Email does not match our records for this number.");
-        }
+        } else { alert("Email does not match our records for this number."); }
     }
     
     function logout() { currentUser = null; isAdmin = false; document.getElementById('authPhone').value=''; document.getElementById('authPass').value=''; switchAuthStep('auth-phone-step'); switchTab('auth'); }
@@ -474,19 +516,13 @@
         document.getElementById('ptm-upi-link').setAttribute('href', upiIntent);
     }
     
-    function markUpiClicked() {
-        upiClicked = true; document.getElementById('upi-warning').style.display = 'none';
-    }
-    
+    function markUpiClicked() { upiClicked = true; document.getElementById('upi-warning').style.display = 'none'; }
     function closePaytm() { document.getElementById('view-paytm').style.display = 'none'; }
     
     function triggerEnhancedVerify() {
         if(!upiClicked) { document.getElementById('upi-warning').style.display = 'block'; return; }
-        
         let inputUtr = document.getElementById('manual-utr').value;
-        if(inputUtr.length !== 12 || isNaN(inputUtr)) {
-            return alert("Please enter a valid 12-digit UTR reference number from your UPI app.");
-        }
+        if(inputUtr.length !== 12 || isNaN(inputUtr)) return alert("Please enter a valid 12-digit UTR reference number from your UPI app.");
 
         document.getElementById('ptm-main-ui').style.display = 'none'; 
         document.getElementById('ptm-verify-ui').style.display = 'flex';
@@ -495,10 +531,7 @@
         txt.innerText = "Connecting to Bank...";
         setTimeout(() => {
             txt.innerText = `Verifying UTR: ${inputUtr}...`;
-            setTimeout(() => {
-                txt.innerText = "Verified! Generating Ticket...";
-                setTimeout(() => finalizeBooking(inputUtr), 1500);
-            }, 2000);
+            setTimeout(() => { txt.innerText = "Verified! Generating Ticket..."; setTimeout(() => finalizeBooking(inputUtr), 1500); }, 2000);
         }, 1500);
     }
 
@@ -508,7 +541,7 @@
         let u = users.find(x => x.phone === currentUser); let t = tours.find(x => x.id === activeTourId);
 
         bookings.push({ id: bkId, phone: currentUser, name: u.name, email: u.email, tourTitle: t.title, date: tempBooking.date, guests: tempBooking.guests, total: tempBooking.total, status: 'Confirmed', txnId: verifiedUtr, cancelReason: '' });
-        localStorage.setItem('wl_bookings_fix', JSON.stringify(bookings));
+        localStorage.setItem('wl_bookings_ui', JSON.stringify(bookings));
 
         sendBackgroundEmail(`💰 BOOKING CONFIRMED - ${bkId}`, { Customer: u.name, Phone: u.phone, Tour: t.title, Date: tempBooking.date, Total: `Rs. ${tempBooking.total}`, UTR_VERIFIED: verifiedUtr });
 
@@ -543,6 +576,11 @@
     }
 
     // ADMIN PANEL
+    function showAddTourForm() {
+        document.getElementById('admin-form-card').style.display = 'block';
+        resetAdminForm();
+    }
+
     function saveTour() {
         let loc = document.getElementById('nLoc').value, title = document.getElementById('nTitle').value, img = document.getElementById('nImg').value, price = parseInt(document.getElementById('nPrice').value), desc = document.getElementById('nDesc').value;
         let eId = document.getElementById('editTourId').value;
@@ -556,20 +594,21 @@
             tours.push({ id: 't'+Date.now(), loc, title, img, price, desc });
             alert("✅ New Package Added!");
         }
-        localStorage.setItem('wl_tours_fix', JSON.stringify(tours));
-        resetAdminForm(); renderAdmin();
+        localStorage.setItem('wl_tours_ui', JSON.stringify(tours));
+        resetAdminForm(); document.getElementById('admin-form-card').style.display = 'none'; renderAdmin();
     }
     
     function editTour(id) {
         let t = tours.find(x => x.id === id);
         if(t) {
+            document.getElementById('admin-form-card').style.display = 'block';
             document.getElementById('editTourId').value = t.id; document.getElementById('nLoc').value = t.loc; document.getElementById('nTitle').value = t.title; document.getElementById('nImg').value = t.img; document.getElementById('nPrice').value = t.price; document.getElementById('nDesc').value = t.desc;
             document.getElementById('adm-form-title').innerText = "✏️ Edit Package"; document.getElementById('btn-save-tour').innerText = "UPDATE PACKAGE"; document.getElementById('btn-cancel-edit').style.display = "block"; window.scrollTo(0,0);
         }
     }
 
-    function resetAdminForm() { document.getElementById('editTourId').value = ''; document.getElementById('nLoc').value=''; document.getElementById('nTitle').value=''; document.getElementById('nImg').value=''; document.getElementById('nPrice').value=''; document.getElementById('nDesc').value=''; document.getElementById('adm-form-title').innerText = "➕ Add New Package"; document.getElementById('btn-save-tour').innerText = "PUBLISH"; document.getElementById('btn-cancel-edit').style.display = "none"; }
-    function delTour(id) { if(confirm("Delete this package?")) { tours = tours.filter(t => t.id !== id); localStorage.setItem('wl_tours_fix', JSON.stringify(tours)); renderAdmin(); } }
+    function resetAdminForm() { document.getElementById('editTourId').value = ''; document.getElementById('nLoc').value=''; document.getElementById('nTitle').value=''; document.getElementById('nImg').value=''; document.getElementById('nPrice').value=''; document.getElementById('nDesc').value=''; document.getElementById('adm-form-title').innerText = "➕ Add New Package"; document.getElementById('btn-save-tour').innerText = "PUBLISH"; document.getElementById('admin-form-card').style.display = 'none'; }
+    function delTour(id) { if(confirm("Delete this package?")) { tours = tours.filter(t => t.id !== id); localStorage.setItem('wl_tours_ui', JSON.stringify(tours)); renderAdmin(); } }
     function openCancelModal(bkId) { document.getElementById('cancel-booking-id').value = bkId; document.getElementById('cancel-reason').value = ''; document.getElementById('cancel-modal').style.display = 'flex'; }
     function closeCancelModal() { document.getElementById('cancel-modal').style.display = 'none'; }
     
@@ -580,7 +619,7 @@
         let idx = bookings.findIndex(b => b.id === bkId);
         if(idx > -1) {
             bookings[idx].status = 'Cancelled'; bookings[idx].cancelReason = reason;
-            localStorage.setItem('wl_bookings_fix', JSON.stringify(bookings));
+            localStorage.setItem('wl_bookings_ui', JSON.stringify(bookings));
             
             let bk = bookings[idx];
             if(bk.email) {
@@ -600,27 +639,27 @@
         let phtml = '';
         tours.forEach(t => { 
             phtml += `<div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border); padding:15px 0;">
-                <div><b style="font-size:14px;">${t.title}</b><br><span style="font-size:12px; color:var(--accent); font-weight:700;">₹${t.price}</span></div>
+                <div><b style="font-size:14px;">${t.title}</b><br><span style="font-size:13px; color:var(--accent); font-weight:800;">₹${t.price.toLocaleString()}</span></div>
                 <div style="display:flex; gap:8px;">
-                    <button class="btn btn-outline" style="width:auto; padding:8px 12px; font-size:12px;" onclick="editTour('${t.id}')">Edit</button>
-                    <button class="btn btn-danger" style="width:auto; padding:8px 12px; font-size:12px;" onclick="delTour('${t.id}')">Del</button>
+                    <button class="btn btn-outline" style="width:auto; padding:8px 14px; font-size:12px; border-radius:10px;" onclick="editTour('${t.id}')">Edit</button>
+                    <button class="btn btn-danger" style="width:auto; padding:8px 14px; font-size:12px; border-radius:10px;" onclick="delTour('${t.id}')">Del</button>
                 </div>
             </div>`; 
-        }); document.getElementById('admin-pkg-list').innerHTML = phtml || '<p style="font-size:12px; color:gray;">No packages.</p>';
+        }); document.getElementById('admin-pkg-list').innerHTML = phtml || '<p style="font-size:13px; color:gray; padding:10px;">No active packages.</p>';
 
         let bhtml = '';
         bookings.slice().reverse().forEach(b => {
-            let badge = b.status === 'Confirmed' ? '<span style="color:var(--success); font-weight:800;">Confirmed</span>' : '<span style="color:var(--danger); font-weight:800;">Cancelled</span>';
-            bhtml += `<div style="border:1px solid var(--border); padding:15px; border-radius:12px; margin-bottom:15px; background:var(--card-bg);">
+            let badge = b.status === 'Confirmed' ? '<span style="color:var(--success); font-weight:800;">CONFIRMED</span>' : '<span style="color:var(--danger); font-weight:800;">CANCELLED</span>';
+            bhtml += `<div class="booking-item">
                 <div style="display:flex; justify-content:space-between; margin-bottom:10px;">
-                    <b style="font-size:14px; color:var(--primary);">${b.name} <span style="font-size:11px; color:var(--text-muted); font-weight:500;">(${b.phone})</span></b>
-                    ${badge}
+                    <b style="font-size:14px; color:var(--primary);">${b.name} <span style="font-size:12px; color:var(--text-muted); font-weight:600;"><br>📞 ${b.phone}</span></b>
+                    <div style="font-size:11px;">${badge}</div>
                 </div>
-                <div style="font-size:12px; color:var(--text-muted); margin-bottom:12px; line-height:1.6;"><b>Tour:</b> ${b.tourTitle} | ${b.date}<br><b>Amt:</b> ₹${b.total} | <b>UTR:</b> ${b.txnId}</div>`;
-            if(b.status === 'Confirmed') { bhtml += `<button class="btn btn-outline" style="width:100%; padding:10px; font-size:12px; border-color:var(--danger); color:var(--danger);" onclick="openCancelModal('${b.id}')">Cancel Booking & Email User</button>`;
-            } else { bhtml += `<div style="font-size:11px; color:var(--danger); background:#fef2f2; padding:10px; border-radius:8px;"><b>Reason:</b> ${b.cancelReason}</div>`; }
+                <div style="font-size:13px; color:var(--text-muted); margin-bottom:12px; line-height:1.6;"><b>Tour:</b> ${b.tourTitle} | ${b.date}<br><b>Amt:</b> ₹${b.total.toLocaleString()} | <b>UTR:</b> ${b.txnId}</div>`;
+            if(b.status === 'Confirmed') { bhtml += `<button class="btn btn-outline" style="width:100%; padding:10px; font-size:12px; border-color:var(--danger); color:var(--danger); border-radius:10px;" onclick="openCancelModal('${b.id}')">Cancel & Email User</button>`;
+            } else { bhtml += `<div style="font-size:12px; color:var(--danger); background:#fef2f2; padding:10px; border-radius:10px; border:1px dashed var(--danger);"><b>Reason:</b> ${b.cancelReason}</div>`; }
             bhtml += `</div>`;
-        }); document.getElementById('admin-bookings-table').innerHTML = bhtml || '<p style="text-align:center; padding: 15px; font-size:13px;">No bookings yet.</p>';
+        }); document.getElementById('admin-bookings-table').innerHTML = bhtml || '<p style="text-align:center; padding: 20px; font-size:13px; color:gray;">No bookings yet.</p>';
     }
 
     switchTab('auth');
