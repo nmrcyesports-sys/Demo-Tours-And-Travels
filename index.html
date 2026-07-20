@@ -664,5 +664,71 @@
 
     switchTab('auth');
 </script>
+    <!-- 🔥 ADMIN FIX PATCH: COPY AND PASTE JUST ABOVE </body> 🔥 -->
+<script>
+    // 1. Add Package form ko show karne aur clear karne ka logic
+    window.showAddTourForm = function() {
+        document.getElementById('editTourId').value = ''; 
+        document.getElementById('nLoc').value = ''; 
+        document.getElementById('nTitle').value = ''; 
+        document.getElementById('nImg').value = ''; 
+        document.getElementById('nPrice').value = ''; 
+        document.getElementById('nDesc').value = ''; 
+        
+        document.getElementById('adm-form-title').innerText = "➕ Add New Package"; 
+        document.getElementById('btn-save-tour').innerText = "PUBLISH"; 
+        
+        // Form ko block/visible karo
+        document.getElementById('admin-form-card').style.display = 'block'; 
+    };
+
+    // 2. Cancel dabane par form ko hide karne ka logic
+    window.resetAdminForm = function() {
+        document.getElementById('admin-form-card').style.display = 'none';
+    };
+
+    // 3. Edit karne par form ko properly show aur fill karne ka logic
+    window.editTour = function(id) {
+        let t = tours.find(x => x.id === id);
+        if(t) {
+            document.getElementById('admin-form-card').style.display = 'block'; // Form show karega
+            document.getElementById('editTourId').value = t.id; 
+            document.getElementById('nLoc').value = t.loc; 
+            document.getElementById('nTitle').value = t.title; 
+            document.getElementById('nImg').value = t.img; 
+            document.getElementById('nPrice').value = t.price; 
+            document.getElementById('nDesc').value = t.desc;
+            
+            document.getElementById('adm-form-title').innerText = "✏️ Edit Package"; 
+            document.getElementById('btn-save-tour').innerText = "UPDATE PACKAGE"; 
+            window.scrollTo(0,0); // Screen ko upar le jayega form ke paas
+        }
+    };
+
+    // 4. Save karne ke baad form hide aur list update karne ka logic
+    window.saveTour = function() {
+        let loc = document.getElementById('nLoc').value, 
+            title = document.getElementById('nTitle').value, 
+            img = document.getElementById('nImg').value, 
+            price = parseInt(document.getElementById('nPrice').value), 
+            desc = document.getElementById('nDesc').value;
+        let eId = document.getElementById('editTourId').value;
+        
+        if(!loc || !title || !img || !price) return alert("Fill required fields!");
+
+        if(eId) {
+            let idx = tours.findIndex(t => t.id === eId);
+            tours[idx] = { id: eId, loc, title, img, price, desc };
+            alert("✅ Package Updated!");
+        } else {
+            tours.push({ id: 't'+Date.now(), loc, title, img, price, desc });
+            alert("✅ New Package Added!");
+        }
+        localStorage.setItem('wl_tours_ui', JSON.stringify(tours));
+        
+        resetAdminForm(); // Save hote hi form chupa dega
+        renderAdmin();    // List ko refresh kar dega
+    };
+</script>
 </body>
 </html>
