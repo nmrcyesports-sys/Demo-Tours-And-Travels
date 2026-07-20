@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>WanderLust | Premium Travel Guide</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap');
+        
+        :root {
+            --primary: #0ea5e9; 
+            --primary-dark: #0284c7;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --danger: #ef4444;
+            --success: #10b981;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparent; }
+        body { background: var(--bg-color); color: var(--text-main); padding-bottom: 80px; }
+        
+        /* Mobile Container */
+        .app-container { max-width: 480px; margin: 0 auto; min-height: 100vh; background: var(--bg-color); position: relative; box-shadow: 0 0 20px rgba(0,0,0,0.05); }
+        
+        h1, h2, h3 { font-family: 'Poppins', sans-serif; color: var(--text-main); }
+        .title-lg { font-size: 24px; font-weight: 700; margin-bottom: 5px; }
+        .title-sm { font-size: 14px; font-weight: 500; color: var(--text-muted); }
+        
+        .p-20 { padding: 20px; }
+        .view-section { display: none; animation: fadeIn 0.3s ease; }
+        .view-section.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .header { display: flex; justify-content: space-between; align-items: center; padding: 20px; background: var(--card-bg); position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .logo { font-family: 'Poppins', sans-serif; font-size: 20px; font-weight: 800; color: var(--primary); display: flex; align-items: center; gap: 5px; }
+        
+        input, select, textarea { width: 100%; padding: 14px; margin: 8px 0; border-radius: 10px; border: 1px solid var(--border); background: var(--card-bg); font-size: 14px; font-family: inherit; outline: none; transition: 0.2s; }
+        input:focus, select:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1); }
+        
+        .btn { padding: 14px; border-radius: 10px; border: none; font-weight: 600; cursor: pointer; width: 100%; font-size: 15px; font-family: 'Poppins', sans-serif; transition: 0.2s; }
+        .btn-primary { background: var(--primary); color: white; box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3); }
+        .btn-primary:hover { background: var(--primary-dark); }
+        .btn-danger { background: var(--danger); color: white; }
+        .btn-outline { background: transparent; border: 1px solid var(--primary); color: var(--primary); }
+        .btn-success { background: var(--success); color: white; box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3); }
+        
+        .card { background: var(--card-bg); border-radius: 16px; padding: 15px; margin-bottom: 15px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); border: 1px solid var(--border); }
+        
+        /* Tour Cards */
+        .tour-card { background: var(--card-bg); border-radius: 20px; overflow: hidden; margin-bottom: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.05); border: 1px solid var(--border); cursor: pointer; transition: transform 0.2s; }
+        .tour-img { width: 100%; height: 220px; object-fit: cover; }
+        .tour-info { padding: 15px 20px; }
+        .tour-loc { font-size: 12px; font-weight: 600; color: var(--primary); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; }
+        .tour-title { font-size: 18px; font-weight: 700; margin-bottom: 8px; font-family: 'Poppins', sans-serif; }
+        .tour-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border); }
+        .tour-price { font-size: 18px; font-weight: 700; color: var(--text-main); }
+        .tour-price span { font-size: 12px; color: var(--text-muted); font-weight: 500; }
+        .tour-rating { background: #fef08a; color: #854d0e; padding: 4px 8px; border-radius: 6px; font-size: 12px; font-weight: 700; display: flex; align-items: center; gap: 4px; }
+        
+        /* Details View */
+        .detail-header { position: relative; height: 300px; }
+        .detail-img { width: 100%; height: 100%; object-fit: cover; border-bottom-left-radius: 30px; border-bottom-right-radius: 30px; }
+        .back-btn { position: absolute; top: 20px; left: 20px; background: rgba(255,255,255,0.9); width: 40px; height: 40px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-weight: bold; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.1); border: none; }
+        .detail-content { padding: 20px; margin-top: -30px; position: relative; background: var(--bg-color); border-top-left-radius: 30px; border-top-right-radius: 30px; }
+        .desc-text { font-size: 14px; line-height: 1.6; color: var(--text-muted); margin: 15px 0; }
+        
+        /* Sub-Header for Pages */
+        .sub-header { display: flex; align-items: center; gap: 15px; padding: 20px; background: var(--card-bg); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid var(--border); }
+        .sub-header h2 { font-size: 18px; margin: 0; }
+
+        /* Payment Options UI */
+        .pay-method { border: 1px solid var(--border); border-radius: 12px; padding: 15px; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; cursor: pointer; transition: 0.2s; background: var(--card-bg); }
+        .pay-method.selected { border-color: var(--primary); background: rgba(14, 165, 233, 0.05); }
+        .pay-icon { font-size: 24px; }
+        
+        .pay-form { display: none; padding: 10px 0; }
+        .pay-method.selected .pay-form { display: block; }
+        
+        .table-responsive { overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; font-size: 12px; text-align: left; }
+        th { padding: 12px; background: #f1f5f9; color: var(--text-muted); font-weight: 600; border-bottom: 1px solid var(--border); }
+        td { padding: 12px; border-bottom: 1px solid var(--border); }
+        
+        .bottom-nav { position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 480px; background: var(--card-bg); border-top: 1px solid var(--border); display: flex; justify-content: space-around; padding: 10px 0 15px; z-index: 200; box-shadow: 0 -4px 20px rgba(0,0,0,0.05); }
+        .nav-item { display: flex; flex-direction: column; align-items: center; color: var(--text-muted); font-size: 11px; font-weight: 600; gap: 4px; cursor: pointer; }
+        .nav-item.active { color: var(--primary); }
+    </style>
+</head>
+<body>
+
+<div class="app-container">
+    
+    <!-- HEADER -->
+    <div class="header" id="main-header">
+        <div class="logo">✈️ WanderLust</div>
+        <div style="font-size: 12px; font-weight: 600; color: var(--text-muted);" id="user-greeting">Guest</div>
+    </div>
+
+    <!-- 1. HOME VIEW -->
+    <div id="view-home" class="view-section active">
+        <div class="p-20" style="padding-bottom: 0;">
+            <h1 class="title-lg">Explore the<br>Beautiful World!</h1>
+            <p class="title-sm" style="margin-bottom: 20px;">Discover premium tour packages.</p>
+        </div>
+        <div class="p-20" id="tours-list"></div>
+    </div>
+
+    <!-- 2. DESTINATION DETAILS VIEW -->
+    <div id="view-details" class="view-section" style="padding-bottom: 100px;">
+        <div class="detail-header">
+            <button class="back-btn" onclick="switchTab('home')">←</button>
+            <img id="det-img" src="" class="detail-img" alt="Location">
+        </div>
+        <div class="detail-content">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <div>
+                    <div class="tour-loc" id="det-loc" style="font-size: 14px;"></div>
+                    <h1 class="tour-title" id="det-title" style="font-size: 24px; margin-bottom: 5px;"></h1>
+                </div>
+                <div class="tour-rating" id="det-rating"></div>
+            </div>
+            <div class="tour-price" style="margin-top: 10px; color: var(--primary); font-size: 22px;" id="det-price"></div>
+            
+            <h3 style="margin-top: 25px; font-size: 16px;">About this destination</h3>
+            <p class="desc-text" id="det-desc"></p>
+            
+            <button class="btn btn-primary" style="margin-top: 20px;" onclick="goToSelection()">SET DATES & BOOK</button>
+        </div>
+    </div>
+
+    <!-- 3. TOUR SELECTION VIEW (Dates & Guests) -->
+    <div id="view-selection" class="view-section">
+        <div class="sub-header">
+            <button class="back-btn" style="position:relative; top:0; left:0; width:35px; height:35px;" onclick="switchTab('details')">←</button>
+            <h2>Customize Trip</h2>
+        </div>
+        <div class="p-20">
+            <div class="card" style="border-left: 4px solid var(--primary);">
+                <b id="sel-title" style="font-size: 16px;"></b><br>
+                <span id="sel-price-text" style="font-size: 12px; color: var(--text-muted);"></span>
+            </div>
+
+            <h3 class="title-sm" style="margin-top: 20px; color: var(--text-main);">1. Select Date of Travel</h3>
+            <input type="date" id="bookDate" min="" required>
+
+            <h3 class="title-sm" style="margin-top: 15px; color: var(--text-main);">2. Number of Travelers</h3>
+            <div style="display: flex; gap: 10px; align-items: center; margin-top: 8px;">
+                <button class="btn btn-outline" style="width: 45px; padding: 10px;" onclick="changeGuests(-1)">-</button>
+                <input type="number" id="bookGuests" value="1" min="1" readonly style="width: 60px; text-align: center; margin: 0;">
+                <button class="btn btn-outline" style="width: 45px; padding: 10px;" onclick="changeGuests(1)">+</button>
+            </div>
+
+            <div class="card" style="margin-top: 30px; background: #f8fafc;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 14px;">
+                    <span style="color: var(--text-muted);">Amount</span>
+                    <b id="sel-amt">₹0</b>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 14px;">
+                    <span style="color: var(--text-muted);">Taxes & Fees</span>
+                    <b id="sel-tax">₹0</b>
+                </div>
+                <hr style="border:none; border-top:1px dashed var(--border); margin: 10px 0;">
+                <div style="display: flex; justify-content: space-between; font-size: 18px; font-weight: 700;">
+                    <span>Total Cost</span>
+                    <span style="color: var(--primary);" id="sel-total">₹0</span>
+                </div>
+            </div>
+
+            <button class="btn btn-primary" onclick="goToPayment()">PROCEED TO CHECKOUT</button>
+        </div>
+    </div>
+
+    <!-- 4. PAYMENT GATEWAY VIEW -->
+    <div id="view-payment" class="view-section">
+        <div class="sub-header">
+            <button class="back-btn" style="position:relative; top:0; left:0; width:35px; height:35px;" onclick="switchTab('selection')">←</button>
+            <h2>Secure Payment</h2>
+        </div>
+        <div class="p-20">
+            <div style="text-align: center; margin-bottom: 25px;">
+                <p class="title-sm">Amount to Pay</p>
+                <h1 style="color: var(--text-main); font-size: 32px;" id="pay-total-display">₹0</h1>
+            </div>
+
+            <h3 class="title-sm" style="margin-bottom: 10px; color: var(--text-main);">Choose Payment Method</h3>
+            
+            <!-- UPI Option -->
+            <div class="pay-method selected" onclick="selectPayMethod(this)">
+                <div style="display:flex; align-items:center; width:100%; gap:10px;">
+                    <span class="pay-icon">📱</span> <b style="flex:1;">UPI (GPay / PhonePe)</b>
+                </div>
+                <div class="pay-form">
+                    <input type="text" placeholder="Enter UPI ID (e.g. name@okhdfc)" style="margin-top:10px;">
+                </div>
+            </div>
+
+            <!-- Card Option -->
+            <div class="pay-method" onclick="selectPayMethod(this)">
+                <div style="display:flex; align-items:center; width:100%; gap:10px;">
+                    <span class="pay-icon">💳</span> <b style="flex:1;">Credit / Debit Card</b>
+                </div>
+                <div class="pay-form">
+                    <input type="text" placeholder="Card Number" maxlength="16" style="margin-top:10px;">
+                    <div style="display:flex; gap:10px;">
+                        <input type="text" placeholder="MM/YY">
+                        <input type="password" placeholder="CVV" maxlength="3">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Net Banking Option -->
+            <div class="pay-method" onclick="selectPayMethod(this)">
+                <div style="display:flex; align-items:center; width:100%; gap:10px;">
+                    <span class="pay-icon">🏦</span> <b style="flex:1;">Net Banking</b>
+                </div>
+                <div class="pay-form">
+                    <select style="margin-top:10px;">
+                        <option>State Bank of India</option>
+                        <option>HDFC Bank</option>
+                        <option>ICICI Bank</option>
+                        <option>Axis Bank</option>
+                    </select>
+                </div>
+            </div>
+
+            <button class="btn btn-success" style="margin-top: 20px; font-size:16px;" id="btn-pay" onclick="processPayment()">PAY NOW</button>
+        </div>
+    </div>
+
+    <!-- 5. MY BOOKINGS VIEW -->
+    <div id="view-bookings" class="view-section">
+        <div class="p-20">
+            <h2 class="title-lg">My Bookings</h2>
+            <p class="title-sm">Your upcoming travel plans.</p>
+        </div>
+        <div class="p-20" id="my-bookings-list"></div>
+    </div>
+
+    <!-- 6. PROFILE / AUTH VIEW -->
+    <div id="view-profile" class="view-section">
+        <div id="auth-screen" class="p-20">
+            <h2 class="title-lg">Welcome Back</h2>
+            <p class="title-sm" style="margin-bottom: 20px;">Login or create an account to book.</p>
+            
+            <div class="card">
+                <input type="text" id="authPhone" placeholder="Mobile Number (10 Digits)" maxlength="10">
+                <input type="password" id="authPass" placeholder="Password">
+                <input type="text" id="authName" placeholder="Full Name (Only for new users)" style="display:none;">
+                
+                <button class="btn btn-primary" onclick="handleAuth()" style="margin-top: 10px;">LOGIN / REGISTER</button>
+                <p style="text-align: center; font-size: 12px; color: var(--primary); margin-top: 15px; cursor: pointer;" onclick="toggleSignup()">New User? Click here to show Name field</p>
+            </div>
+
+            <div style="margin-top: 40px; text-align: center;">
+                <p style="font-size: 12px; color: var(--text-muted); cursor: pointer;" onclick="document.getElementById('admin-login-box').style.display='block'">Admin Access?</p>
+            </div>
+            
+            <div class="card" id="admin-login-box" style="display: none; margin-top: 15px; border-color: var(--danger);">
+                <input type="password" id="adminPass" placeholder="Admin Secret Password">
+                <button class="btn btn-danger" onclick="loginAdmin()">LOGIN AS ADMIN</button>
+            </div>
+        </div>
+
+        <div id="profile-dashboard" class="p-20" style="display: none;">
+            <div class="card" style="text-align: center; padding: 30px 15px;">
+                <div style="width: 80px; height: 80px; background: var(--primary); color: white; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 30px; font-weight: bold; margin: 0 auto 15px;">👤</div>
+                <h2 id="prof-name"></h2>
+                <p class="title-sm" id="prof-phone"></p>
+                <button class="btn btn-outline" style="margin-top: 20px;" onclick="logout()">LOGOUT</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 7. ADMIN DASHBOARD -->
+    <div id="view-admin" class="view-section">
+        <div class="p-20">
+            <h2 class="title-lg" style="color: var(--danger);">Admin Panel</h2>
+            <p class="title-sm">Manage tours and customer bookings.</p>
+        </div>
+
+        <div class="p-20">
+            <div class="card">
+                <h3>➕ Add New Tour Package</h3>
+                <input type="text" id="nLoc" placeholder="Location Category (e.g. BALI, INDONESIA)">
+                <input type="text" id="nTitle" placeholder="Tour Title (e.g. 5 Days in Paradise)">
+                <input type="text" id="nImg" placeholder="Image URL (Link of the photo)">
+                <div style="display: flex; gap: 10px;">
+                    <input type="number" id="nPrice" placeholder="Price (₹)">
+                    <input type="text" id="nRate" placeholder="Rating (e.g. 4.8)">
+                </div>
+                <textarea id="nDesc" rows="3" placeholder="Description of the tour..."></textarea>
+                <button class="btn btn-danger" onclick="addTour()">PUBLISH TOUR</button>
+            </div>
+        </div>
+
+        <div class="p-20">
+            <div class="card">
+                <h3>📋 Customer Bookings</h3>
+                <div class="table-responsive" style="margin-top: 10px;"><table id="admin-bookings-table"></table></div>
+            </div>
+            <div class="card">
+                <h3>🗑️ Manage Packages</h3>
+                <div id="admin-pkg-list"></div>
+            </div>
+            <button class="btn btn-outline" style="margin-top: 15px; border-color: var(--danger); color: var(--danger);" onclick="logout()">LOGOUT ADMIN</button>
+        </div>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav" id="bottom-nav">
+        <div class="nav-item active" onclick="switchTab('home')" id="nav-home"><span class="nav-icon">🌍</span><span>Home</span></div>
+        <div class="nav-item" onclick="switchTab('bookings')" id="nav-bookings"><span class="nav-icon">🎒</span><span>Bookings</span></div>
+        <div class="nav-item" onclick="switchTab('profile')" id="nav-profile"><span class="nav-icon">👤</span><span>Profile</span></div>
+    </nav>
+</div>
+
+<script>
+    const defaultTours = [
+        { id: 't1', loc: 'MALDIVES', title: 'Luxury Water Villa Stay', price: 45000, rate: '4.9', img: 'https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&w=500&q=80', desc: 'Experience the ultimate luxury in our premium water villas. Includes 4 days & 3 nights stay, complimentary breakfast, and scuba diving sessions.' },
+        { id: 't2', loc: 'MANALI, INDIA', title: 'Snow Mountain Adventure', price: 12500, rate: '4.7', img: 'https://images.unsplash.com/photo-1605649487212-4d4b85c18e93?auto=format&fit=crop&w=500&q=80', desc: 'A thrilling 5-day adventure in the Himalayas. Includes trekking, paragliding, bonfire nights, and comfortable hotel stays.' },
+        { id: 't3', loc: 'PARIS, FRANCE', title: 'Romantic Europe Getaway', price: 85000, rate: '4.8', img: 'https://images.unsplash.com/photo-1502602898657-3e90760b7e28?auto=format&fit=crop&w=500&q=80', desc: 'Explore the city of love. Package covers flights, Eiffel tower dinner, Louvre museum entry, and a 4-star hotel stay.' }
+    ];
+
+    let tours = JSON.parse(localStorage.getItem('wl_tours_v2')) || defaultTours;
+    let users = JSON.parse(localStorage.getItem('wl_users_v2')) || [];
+    let bookings = JSON.parse(localStorage.getItem('wl_bookings_v2')) || [];
+    
+    let currentUser = null, isAdmin = false, activeTourId = null;
+    let tempBooking = { guests: 1, total: 0, date: '' };
+
+    if(!localStorage.getItem('wl_tours_v2')) localStorage.setItem('wl_tours_v2', JSON.stringify(tours));
+
+    // Disable past dates in date picker
+    let today = new Date().toISOString().split('T')[0];
+    document.getElementById("bookDate").setAttribute('min', today);
+
+    function switchTab(tabId) {
+        document.querySelectorAll('.view-section').forEach(v => v.classList.remove('active'));
+        document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+        
+        // Hide Bottom Nav on Details, Selection, and Payment screens
+        let hideNavTabs = ['details', 'selection', 'payment'];
+        document.getElementById('bottom-nav').style.display = hideNavTabs.includes(tabId) ? 'none' : 'flex';
+        
+        if(tabId === 'profile' && isAdmin) {
+            document.getElementById('view-admin').classList.add('active');
+            document.getElementById('nav-profile').classList.add('active');
+            renderAdmin();
+        } else {
+            document.getElementById('view-' + tabId).classList.add('active');
+            if(document.getElementById('nav-' + tabId)) document.getElementById('nav-' + tabId).classList.add('active');
+            if(tabId === 'home') renderHome();
+            if(tabId === 'bookings') renderBookings();
+            if(tabId === 'profile') renderProfileState();
+        }
+        window.scrollTo(0,0);
+    }
+
+    // --- AUTH ---
+    function toggleSignup() { let n = document.getElementById('authName'); n.style.display = n.style.display === 'none' ? 'block' : 'none'; }
+    function handleAuth() {
+        let phone = document.getElementById('authPhone').value, pass = document.getElementById('authPass').value, name = document.getElementById('authName').value;
+        let isSignup = document.getElementById('authName').style.display === 'block';
+        if(phone.length !== 10) return alert("Enter valid 10-digit mobile number.");
+        if(!pass) return alert("Enter password.");
+        let existingUser = users.find(u => u.phone === phone);
+        if(isSignup) {
+            if(existingUser) return alert("Number already registered. Please login.");
+            if(!name) return alert("Enter your Full Name.");
+            users.push({ phone, pass, name }); localStorage.setItem('wl_users_v2', JSON.stringify(users));
+            currentUser = phone; alert("Account Created!");
+        } else {
+            if(!existingUser) return alert("Account not found. Register first.");
+            if(existingUser.pass !== pass) return alert("Incorrect Password!");
+            currentUser = phone;
+        }
+        isAdmin = false; document.getElementById('authPhone').value = ''; document.getElementById('authPass').value = '';
+        renderProfileState(); switchTab('home');
+    }
+    function loginAdmin() { if(document.getElementById('adminPass').value === 'admin123') { isAdmin = true; currentUser = null; document.getElementById('adminPass').value = ''; switchTab('profile'); } else alert("Wrong Password!"); }
+    function logout() { currentUser = null; isAdmin = false; renderProfileState(); switchTab('profile'); }
+    function renderProfileState() {
+        if(currentUser) {
+            let user = users.find(u => u.phone === currentUser);
+            document.getElementById('auth-screen').style.display = 'none'; document.getElementById('profile-dashboard').style.display = 'block';
+            document.getElementById('user-greeting').innerText = `Hi, ${user.name.split(' ')[0]}`;
+            document.getElementById('prof-name').innerText = user.name; document.getElementById('prof-phone').innerText = "+91 " + user.phone;
+        } else {
+            document.getElementById('auth-screen').style.display = 'block'; document.getElementById('profile-dashboard').style.display = 'none';
+            document.getElementById('user-greeting').innerText = "Guest";
+        }
+    }
+
+    // --- HOME & DETAILS ---
+    function renderHome() {
+        let h = '';
+        tours.forEach(t => {
+            h += `<div class="tour-card" onclick="openDetails('${t.id}')">
+                <img src="${t.img}" class="tour-img" onerror="this.src='https://via.placeholder.com/500x300'">
+                <div class="tour-info">
+                    <div class="tour-loc">📍 ${t.loc}</div><div class="tour-title">${t.title}</div>
+                    <div class="tour-footer"><div class="tour-price">₹${t.price.toLocaleString()}<span>/person</span></div><div class="tour-rating">⭐ ${t.rate}</div></div>
+                </div></div>`;
+        });
+        document.getElementById('tours-list').innerHTML = h || '<p style="text-align:center; color:gray;">No tours available.</p>';
+    }
+    function openDetails(id) {
+        activeTourId = id; let t = tours.find(x => x.id === id); if(!t) return;
+        document.getElementById('det-img').src = t.img; document.getElementById('det-loc').innerText = "📍 " + t.loc;
+        document.getElementById('det-title').innerText = t.title; document.getElementById('det-rating').innerHTML = "⭐ " + t.rate;
+        document.getElementById('det-price').innerHTML = `₹${t.price.toLocaleString()} <span style="font-size:14px; font-weight:normal; color:var(--text-muted)">/person</span>`;
+        document.getElementById('det-desc').innerText = t.desc;
+        switchTab('details');
+    }
+
+    // --- BOOKING SELECTION (DATES & GUESTS) ---
+    function goToSelection() {
+        if(!currentUser) { alert("Please login to book a package."); return switchTab('profile'); }
+        let t = tours.find(x => x.id === activeTourId);
+        document.getElementById('sel-title').innerText = t.title;
+        document.getElementById('sel-price-text').innerText = `₹${t.price.toLocaleString()} per person`;
+        
+        // Reset inputs
+        tempBooking.guests = 1;
+        document.getElementById('bookGuests').value = 1;
+        document.getElementById('bookDate').value = '';
+        updateCostCalc();
+        switchTab('selection');
+    }
+
+    function changeGuests(val) {
+        let newG = tempBooking.guests + val;
+        if(newG >= 1 && newG <= 10) { tempBooking.guests = newG; document.getElementById('bookGuests').value = newG; updateCostCalc(); }
+    }
+
+    function updateCostCalc() {
+        let t = tours.find(x => x.id === activeTourId);
+        let amt = t.price * tempBooking.guests;
+        let tax = Math.floor(amt * 0.18); // 18% dummy tax
+        tempBooking.total = amt + tax;
+
+        document.getElementById('sel-amt').innerText = `₹${amt.toLocaleString()}`;
+        document.getElementById('sel-tax').innerText = `₹${tax.toLocaleString()}`;
+        document.getElementById('sel-total').innerText = `₹${tempBooking.total.toLocaleString()}`;
+    }
+
+    function goToPayment() {
+        let d = document.getElementById('bookDate').value;
+        if(!d) return alert("Please select a date of travel.");
+        tempBooking.date = d;
+        
+        // Update payment page UI
+        document.getElementById('pay-total-display').innerText = `₹${tempBooking.total.toLocaleString()}`;
+        switchTab('payment');
+    }
+
+    // --- PAYMENT GATEWAY MOCKUP ---
+    function selectPayMethod(el) {
+        document.querySelectorAll('.pay-method').forEach(m => m.classList.remove('selected'));
+        el.classList.add('selected');
+    }
+
+    function processPayment() {
+        let btn = document.getElementById('btn-pay');
+        btn.innerText = "PROCESSING...";
+        btn.style.opacity = '0.7';
+        
+        // Fake 2-second processing delay to look professional
+        setTimeout(() => {
+            let bkId = 'WLT' + Math.floor(10000 + Math.random() * 90000);
+            bookings.push({
+                id: bkId, phone: currentUser, tourId: activeTourId, 
+                date: tempBooking.date, guests: tempBooking.guests, total: tempBooking.total,
+                status: 'Confirmed' // Direct confirm because payment succeeded
+            });
+            localStorage.setItem('wl_bookings_v2', JSON.stringify(bookings));
+            
+            alert(`✅ Payment Successful!\nYour booking ID is ${bkId}. Have a great trip!`);
+            btn.innerText = "PAY NOW"; btn.style.opacity = '1';
+            switchTab('bookings');
+        }, 1500);
+    }
+
+    // --- USER BOOKINGS ---
+    function renderBookings() {
+        if(!currentUser) { document.getElementById('my-bookings-list').innerHTML = `<div class="card" style="text-align:center;"><p>Login to view bookings.</p><button class="btn btn-outline" style="margin-top:10px;" onclick="switchTab('profile')">GO TO LOGIN</button></div>`; return; }
+        let myBkgs = bookings.filter(b => b.phone === currentUser);
+        let h = '';
+        if(myBkgs.length === 0) { h = '<p style="text-align:center; color:gray;">You have no upcoming trips.</p>'; }
+        
+        myBkgs.forEach(b => {
+            let t = tours.find(x => x.id === b.tourId) || {title: 'Deleted Tour', loc: '-'};
+            let statColor = b.status === 'Confirmed' ? 'var(--success)' : (b.status==='Cancelled' ? 'var(--danger)' : 'var(--warning)');
+            
+            h += `<div class="card" style="border-left: 4px solid ${statColor}">
+                <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
+                    <b style="font-size:16px;">${t.title}</b>
+                    <span style="font-size:11px; font-weight:bold; color:${statColor}; background:rgba(0,0,0,0.05); padding:2px 8px; border-radius:4px;">${b.status}</span>
+                </div>
+                <div style="font-size:12px; color:var(--text-muted); line-height: 1.6;">
+                    📍 ${t.loc} <br>
+                    👥 ${b.guests} Guests | 📅 Trip Date: ${b.date} <br>
+                    💰 Total Paid: ₹${b.total.toLocaleString()} <br>
+                    🔖 Booking ID: <b>${b.id}</b>
+                </div>
+            </div>`;
+        });
+        document.getElementById('my-bookings-list').innerHTML = h;
+    }
+
+    // --- ADMIN PANEL ---
+    function addTour() {
+        let loc = document.getElementById('nLoc').value, title = document.getElementById('nTitle').value, img = document.getElementById('nImg').value;
+        let price = parseInt(document.getElementById('nPrice').value), rate = document.getElementById('nRate').value, desc = document.getElementById('nDesc').value;
+        if(!loc || !title || !img || !price || !desc) return alert("Fill all details!");
+        tours.push({ id: 't'+Date.now(), loc, title, img, price, rate: rate||'4.5', desc });
+        localStorage.setItem('wl_tours_v2', JSON.stringify(tours)); alert("✅ Tour Package Published!");
+        document.getElementById('nLoc').value=''; document.getElementById('nTitle').value=''; document.getElementById('nImg').value=''; document.getElementById('nPrice').value=''; document.getElementById('nRate').value=''; document.getElementById('nDesc').value='';
+        renderAdmin();
+    }
+    function delTour(id) { if(confirm("Delete this tour?")) { tours = tours.filter(t => t.id !== id); localStorage.setItem('wl_tours_v2', JSON.stringify(tours)); renderAdmin(); } }
+    function updateBooking(id, status) { let idx = bookings.findIndex(b => b.id === id); if(idx > -1) { bookings[idx].status = status; localStorage.setItem('wl_bookings_v2', JSON.stringify(bookings)); } }
+    
+    function renderAdmin() {
+        let bhtml = `<tr><th>ID / User</th><th>Tour / Date</th><th>Status</th></tr>`;
+        bookings.forEach(b => {
+            let tName = (tours.find(x => x.id === b.tourId) || {}).title || 'Deleted';
+            let uName = (users.find(u => u.phone === b.phone) || {}).name || b.phone;
+            bhtml += `<tr>
+                <td><b>${b.id}</b><br><span style="color:gray; font-size:10px;">${uName}<br>${b.phone}</span></td>
+                <td>${tName}<br><span style="color:gray; font-size:10px;">For: ${b.date}</span></td>
+                <td><select onchange="updateBooking('${b.id}', this.value)" style="padding:4px; margin:0; font-size:11px;">
+                        <option value="Pending" ${b.status==='Pending'?'selected':''}>Pend</option>
+                        <option value="Confirmed" ${b.status==='Confirmed'?'selected':''}>Conf</option>
+                        <option value="Cancelled" ${b.status==='Cancelled'?'selected':''}>Cancel</option>
+                    </select></td>
+            </tr>`;
+        });
+        document.getElementById('admin-bookings-table').innerHTML = bhtml;
+
+        let phtml = '';
+        tours.forEach(t => { phtml += `<div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #eee; padding:10px 0;"><div><b>${t.title}</b><br><span style="font-size:11px; color:gray;">₹${t.price}</span></div><button class="btn btn-danger" style="width:auto; padding:5px 10px; font-size:11px;" onclick="delTour('${t.id}')">Del</button></div>`; });
+        document.getElementById('admin-pkg-list').innerHTML = phtml || '<p>No packages.</p>';
+    }
+
+    renderHome();
+</script>
+</body>
+</html>
