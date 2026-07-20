@@ -9,8 +9,8 @@
         
         :root {
             --primary: #0f172a; 
-            --accent: #002970; /* Paytm Deep Blue */
-            --accent-light: #00baf2; /* Paytm Light Blue */
+            --accent: #002970; 
+            --accent-light: #00baf2; 
             --bg-color: #f8fafc;
             --card-bg: #ffffff;
             --text-main: #0f172a;
@@ -21,12 +21,12 @@
         }
         
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; -webkit-tap-highlight-color: transparent; }
-        body { background: var(--bg-color); color: var(--text-main); padding-bottom: 90px; }
+        body { background: var(--bg-color); color: var(--text-main); padding-bottom: 100px; }
         
         .app-container { max-width: 480px; margin: 0 auto; min-height: 100vh; background: var(--bg-color); position: relative; box-shadow: 0 0 40px rgba(0,0,0,0.08); overflow-x: hidden; }
         
         h1, h2, h3 { color: var(--text-main); letter-spacing: -0.5px; }
-        .title-lg { font-size: 26px; font-weight: 800; margin-bottom: 8px; line-height: 1.2; }
+        .title-lg { font-size: 28px; font-weight: 800; margin-bottom: 8px; line-height: 1.2; }
         .title-sm { font-size: 14px; font-weight: 500; color: var(--text-muted); }
         
         .p-20 { padding: 20px; }
@@ -34,29 +34,31 @@
         .view-section.active { display: block; }
         @keyframes fadeUp { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
         
-        .header { display: flex; justify-content: space-between; align-items: center; padding: 20px; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid var(--border); }
-        .logo { font-size: 20px; font-weight: 800; color: var(--primary); display: flex; align-items: center; gap: 8px; }
+        /* FIXED HEADER */
+        .header { display: flex; justify-content: space-between; align-items: center; padding: 18px 20px; background: rgba(255,255,255,0.98); backdrop-filter: blur(15px); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid var(--border); box-shadow: 0 4px 20px rgba(0,0,0,0.02); }
+        .logo { font-size: 22px; font-weight: 800; color: var(--primary); display: flex; align-items: center; gap: 8px; }
+        .user-pill { font-size: 12px; font-weight: 700; background: var(--bg-color); color: var(--accent); padding: 8px 16px; border-radius: 20px; border: 1px solid var(--border); transition: 0.3s; }
         
-        input, select, textarea { width: 100%; padding: 14px; margin: 8px 0; border-radius: 12px; border: 1.5px solid var(--border); background: var(--card-bg); font-size: 14px; font-weight: 500; outline: none; transition: 0.3s ease; }
+        input, select, textarea { width: 100%; padding: 16px; margin: 8px 0; border-radius: 12px; border: 1.5px solid var(--border); background: var(--card-bg); font-size: 15px; font-weight: 500; outline: none; transition: 0.3s ease; }
         input:focus, textarea:focus { border-color: var(--accent-light); box-shadow: 0 0 0 4px rgba(0, 186, 242, 0.1); }
         
-        .btn { padding: 16px; border-radius: 12px; border: none; font-weight: 700; cursor: pointer; width: 100%; font-size: 14px; transition: 0.2s ease; display: flex; justify-content: center; align-items: center; gap: 8px; text-decoration: none; }
+        .btn { padding: 16px; border-radius: 12px; border: none; font-weight: 700; cursor: pointer; width: 100%; font-size: 15px; transition: 0.2s ease; display: flex; justify-content: center; align-items: center; gap: 8px; }
         .btn-primary { background: var(--primary); color: white; }
-        .btn-paytm { background: var(--accent); color: white; box-shadow: 0 8px 20px rgba(0, 41, 112, 0.15); }
+        .btn-paytm { background: var(--accent); color: white; box-shadow: 0 8px 20px rgba(0, 41, 112, 0.2); }
         .btn-success { background: var(--success); color: white; }
         .btn-danger { background: var(--danger); color: white; }
         .btn-outline { background: transparent; border: 1.5px solid var(--border); color: var(--text-main); }
         .btn:active { transform: scale(0.97); }
         
-        .card { background: var(--card-bg); border-radius: 16px; padding: 20px; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.03); border: 1px solid var(--border); }
+        .card { background: var(--card-bg); border-radius: 20px; padding: 22px; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.03); border: 1px solid var(--border); }
         
-        /* Home Tours */
-        .tour-card { background: var(--card-bg); border-radius: 20px; overflow: hidden; margin-bottom: 25px; box-shadow: 0 8px 25px rgba(0,0,0,0.05); cursor: pointer; border: 1px solid var(--border); transition: 0.3s; }
-        .tour-img { width: 100%; height: 220px; object-fit: cover; }
-        .tour-info { padding: 18px; }
-        .tour-loc { font-size: 11px; font-weight: 700; color: var(--accent-light); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+        /* PREMIUM TOUR CARDS */
+        .tour-card { background: var(--card-bg); border-radius: 24px; overflow: hidden; margin-bottom: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.06); cursor: pointer; border: 1px solid var(--border); transition: 0.3s; }
+        .tour-img { width: 100%; height: 240px; object-fit: cover; background-color: #e2e8f0; }
+        .tour-info { padding: 20px; }
+        .tour-loc { font-size: 12px; font-weight: 700; color: var(--accent-light); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px; }
         
-        /* Auth & Gateway */
+        /* AUTH & GATEWAY */
         .auth-step { display: none; }
         .auth-step.active { display: block; animation: fadeUp 0.3s ease; }
         
@@ -66,34 +68,29 @@
         .verify-box { display: none; flex-direction: column; align-items: center; justify-content: center; height: 100%; background: var(--card-bg); z-index: 1000; position: absolute; inset: 0; }
         .spinner-blue { width: 45px; height: 45px; border: 4px solid var(--border); border-top: 4px solid var(--accent-light); border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 20px; }
         
-        /* Modals & Loaders */
         .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); z-index: 1000; display: none; justify-content: center; align-items: center; padding: 20px; }
-        .modal-content { background: var(--card-bg); width: 100%; border-radius: 20px; padding: 20px; animation: fadeUp 0.3s ease; }
+        .modal-content { background: var(--card-bg); width: 100%; border-radius: 24px; padding: 25px; animation: fadeUp 0.3s ease; }
+        
         #loader { display: none; position: fixed; inset: 0; background: rgba(255,255,255,0.95); z-index: 1000; justify-content: center; align-items: center; flex-direction: column; }
-        .spinner { width: 40px; height: 40px; border: 4px solid var(--border); border-top: 4px solid var(--primary); border-radius: 50%; animation: spin 1s linear infinite; }
-        @keyframes spin { 100% { transform: rotate(360deg); } }
+        .spinner { width: 45px; height: 45px; border: 4px solid var(--border); border-top: 4px solid var(--primary); border-radius: 50%; animation: spin 1s linear infinite; }
         
-        /* Admin Stats */
-        .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px; }
-        .stat-box { background: var(--card-bg); border: 1px solid var(--border); padding: 15px; border-radius: 12px; text-align: center; }
-        .stat-val { font-size: 22px; font-weight: 800; color: var(--accent); margin-top: 5px; }
-
-        /* Bottom Nav */
-        .bottom-nav { position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 480px; background: rgba(255,255,255,0.95); backdrop-filter: blur(15px); border-top: 1px solid var(--border); display: flex; justify-content: space-around; padding: 12px 0 15px; z-index: 200; }
-        .nav-item { display: flex; flex-direction: column; align-items: center; color: var(--text-muted); font-size: 11px; font-weight: 700; gap: 4px; cursor: pointer; transition: 0.2s; }
-        .nav-item.active { color: var(--primary); }
+        /* FIXED BOTTOM NAVIGATION */
+        .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; margin: 0 auto; width: 100%; max-width: 480px; background: rgba(255,255,255,0.98); backdrop-filter: blur(15px); border-top: 1px solid var(--border); display: flex; justify-content: space-around; padding: 12px 0 25px; z-index: 200; box-shadow: 0 -4px 20px rgba(0,0,0,0.05); }
+        .nav-item { display: flex; flex-direction: column; align-items: center; color: var(--text-muted); font-size: 11px; font-weight: 700; gap: 4px; cursor: pointer; transition: 0.2s; width: 33%; }
+        .nav-item.active { color: var(--accent); }
+        .nav-icon { width: 24px; height: 24px; fill: currentColor; margin-bottom: 2px; }
     </style>
 </head>
 <body>
 
 <div class="app-container">
     
-    <div id="loader"><div class="spinner"></div><p style="margin-top: 12px; font-weight: 700; color: var(--primary); font-size:14px;" id="loader-text">Processing...</p></div>
+    <div id="loader"><div class="spinner"></div><p style="margin-top: 15px; font-weight: 700; color: var(--primary);" id="loader-text">Processing...</p></div>
 
     <!-- HEADER -->
     <div class="header" id="main-header">
         <div class="logo">WanderLust.</div>
-        <div style="font-size: 11px; font-weight: 700; background: var(--bg-color); padding: 8px 14px; border-radius: 20px; border: 1px solid var(--border);" id="user-greeting">Guest</div>
+        <div class="user-pill" id="user-greeting">Guest</div>
     </div>
 
     <!-- 1. AUTH -->
@@ -108,20 +105,20 @@
                     <button class="btn btn-primary" style="margin-top: 15px;" onclick="checkAuthPhone()">CONTINUE</button>
                 </div>
                 <div id="auth-login-step" class="auth-step">
-                    <p style="font-size: 12px; font-weight: 700; color: var(--primary); margin-bottom: 10px;" id="auth-display-phone"></p>
+                    <p style="font-size: 13px; font-weight: 700; color: var(--primary); margin-bottom: 10px;" id="auth-display-phone"></p>
                     <input type="password" id="authPass" placeholder="Enter Password">
                     <button class="btn btn-primary" style="margin-top: 15px;" onclick="processLogin()">LOGIN</button>
-                    <p style="text-align: center; font-size: 12px; color: var(--accent); margin-top: 15px; cursor: pointer;" onclick="switchAuthStep('auth-forgot-step')">Forgot Password?</p>
+                    <p style="text-align: center; font-size: 13px; color: var(--accent); margin-top: 20px; cursor: pointer; font-weight:600;" onclick="switchAuthStep('auth-forgot-step')">Forgot Password?</p>
                 </div>
                 <div id="auth-signup-step" class="auth-step">
-                    <p style="font-size: 12px; font-weight: 700; color: var(--success); margin-bottom: 10px;">Create Account</p>
+                    <p style="font-size: 13px; font-weight: 700; color: var(--success); margin-bottom: 10px;">Create Account</p>
                     <input type="text" id="regName" placeholder="Full Name">
                     <input type="email" id="regEmail" placeholder="Email Address">
                     <input type="password" id="regPass" placeholder="Create Password">
                     <button class="btn btn-paytm" style="margin-top: 15px;" onclick="processRegister()">REGISTER</button>
                 </div>
                 <div id="auth-forgot-step" class="auth-step">
-                    <p style="font-size: 12px; font-weight: 700; color: var(--danger); margin-bottom: 10px;">Reset Password</p>
+                    <p style="font-size: 13px; font-weight: 700; color: var(--danger); margin-bottom: 10px;">Reset Password</p>
                     <input type="email" id="forgotEmail" placeholder="Enter Registered Email">
                     <button class="btn btn-primary" style="margin-top: 15px;" onclick="processForgotPass()">RESET VIA EMAIL</button>
                 </div>
@@ -137,15 +134,15 @@
 
     <!-- 3. DETAILS -->
     <div id="view-details" class="view-section" style="padding-bottom: 100px;">
-        <div style="position: relative; height: 300px;">
-            <button onclick="switchTab('home')" style="position: absolute; top: 15px; left: 15px; width: 40px; height: 40px; border-radius: 50%; border: none; background: rgba(255,255,255,0.9); font-size: 18px; font-weight: bold; cursor: pointer; z-index: 10;">←</button>
-            <img id="det-img" src="" style="width: 100%; height: 100%; object-fit: cover; border-bottom-left-radius: 30px; border-bottom-right-radius: 30px;">
+        <div style="position: relative; height: 350px;">
+            <button onclick="switchTab('home')" style="position: absolute; top: 20px; left: 20px; width: 45px; height: 45px; border-radius: 50%; border: none; background: rgba(255,255,255,0.9); font-size: 20px; font-weight: bold; cursor: pointer; z-index: 10;">←</button>
+            <img id="det-img" src="" style="width: 100%; height: 100%; object-fit: cover; border-bottom-left-radius: 40px; border-bottom-right-radius: 40px;" onerror="this.src='https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=600&q=80'">
         </div>
-        <div style="padding: 25px 20px; margin-top: -30px; position: relative; background: var(--bg-color); border-top-left-radius: 30px; border-top-right-radius: 30px;">
+        <div style="padding: 30px 25px; margin-top: -40px; position: relative; background: var(--bg-color); border-top-left-radius: 40px; border-top-right-radius: 40px;">
             <div class="tour-loc" id="det-loc"></div>
-            <h1 class="tour-title" id="det-title" style="font-size: 24px; font-weight:800;"></h1>
-            <div class="tour-price" style="margin-top: 8px; color: var(--primary); font-size: 22px; font-weight:800;" id="det-price"></div>
-            <p id="det-desc" style="font-size: 13px; line-height: 1.7; color: var(--text-muted); margin: 15px 0;"></p>
+            <h1 class="tour-title" id="det-title" style="font-size: 28px; font-weight:800;"></h1>
+            <div class="tour-price" style="margin-top: 10px; color: var(--primary); font-size: 26px; font-weight:800;" id="det-price"></div>
+            <p id="det-desc" style="font-size: 14px; line-height: 1.8; color: var(--text-muted); margin: 20px 0;"></p>
             <button class="btn btn-primary" onclick="goToSelection()">CHECK AVAILABILITY</button>
         </div>
     </div>
@@ -153,55 +150,55 @@
     <!-- 4. SELECTION -->
     <div id="view-selection" class="view-section">
         <div class="p-20">
-            <button onclick="switchTab('details')" style="width: 35px; height: 35px; border-radius: 10px; border: 1px solid var(--border); background: var(--card-bg); font-weight: bold; cursor: pointer; margin-bottom: 15px;">←</button>
-            <h2 class="title-lg" style="font-size:22px;">Customize Trip</h2>
+            <button onclick="switchTab('details')" style="width: 40px; height: 40px; border-radius: 12px; border: 1px solid var(--border); background: var(--card-bg); font-weight: bold; cursor: pointer; margin-bottom: 20px;">←</button>
+            <h2 class="title-lg">Customize Trip</h2>
             
-            <div class="card" style="border-left: 5px solid var(--accent-light); margin-top: 15px;">
-                <b id="sel-title" style="font-size: 15px;"></b><br>
-                <span id="sel-price-text" style="font-size: 12px; color: var(--text-muted);"></span>
+            <div class="card" style="border-left: 6px solid var(--accent-light); margin-top: 20px;">
+                <b id="sel-title" style="font-size: 16px;"></b><br>
+                <span id="sel-price-text" style="font-size: 13px; color: var(--text-muted);"></span>
             </div>
 
-            <h3 class="title-sm" style="margin-top: 20px;">Travel Date</h3>
+            <h3 class="title-sm" style="margin-top: 25px;">Travel Date</h3>
             <input type="date" id="bookDate" min="" required>
 
-            <h3 class="title-sm" style="margin-top: 15px;">Guests</h3>
-            <div style="display: flex; gap: 15px; align-items: center; margin-top: 5px;">
-                <button class="btn btn-outline" style="width: 50px; padding: 10px; font-size: 20px;" onclick="changeGuests(-1)">-</button>
-                <input type="number" id="bookGuests" value="1" min="1" readonly style="width: 60px; text-align: center; margin: 0; font-size: 18px; font-weight: 800; border:none; background:transparent;">
-                <button class="btn btn-outline" style="width: 50px; padding: 10px; font-size: 20px;" onclick="changeGuests(1)">+</button>
+            <h3 class="title-sm" style="margin-top: 20px;">Guests</h3>
+            <div style="display: flex; gap: 15px; align-items: center; margin-top: 8px;">
+                <button class="btn btn-outline" style="width: 60px; padding: 12px; font-size: 24px;" onclick="changeGuests(-1)">-</button>
+                <input type="number" id="bookGuests" value="1" min="1" readonly style="width: 80px; text-align: center; margin: 0; font-size: 22px; font-weight: 800; border:none; background:transparent;">
+                <button class="btn btn-outline" style="width: 60px; padding: 12px; font-size: 24px;" onclick="changeGuests(1)">+</button>
             </div>
 
-            <div class="card" style="margin-top: 25px; border: 1.5px dashed var(--border);">
-                <div style="display: flex; justify-content: space-between; font-size: 18px; font-weight: 800;"><span>Total Cost</span><span style="color: var(--accent);" id="sel-total">₹0</span></div>
+            <div class="card" style="margin-top: 30px; border: 2px dashed var(--border);">
+                <div style="display: flex; justify-content: space-between; font-size: 22px; font-weight: 800;"><span>Total Cost</span><span style="color: var(--accent);" id="sel-total">₹0</span></div>
             </div>
 
             <button class="btn btn-primary" onclick="openPaytmGateway()">PROCEED TO CHECKOUT</button>
         </div>
     </div>
 
-    <!-- 5. ENHANCED PAYTM VERIFICATION GATEWAY -->
+    <!-- 5. PAYTM VERIFICATION GATEWAY -->
     <div id="view-paytm" class="paytm-overlay">
         <div class="paytm-header">🔒 Paytm Secure Payment</div>
         
         <div class="p-20" id="ptm-main-ui" style="flex:1; overflow-y:auto;">
-            <div style="text-align: center; margin: 15px 0 25px;">
-                <p style="font-size: 13px; font-weight: 600; color: var(--text-muted);">Amount to Pay</p>
-                <h1 style="font-size: 36px; font-weight: 800; color: var(--primary);" id="ptm-amt">₹0</h1>
-                <p style="font-size: 12px; font-weight: 600; color: var(--text-main); margin-top: 8px;">Paying: <b>Lucky Travels (6200871886@axl)</b></p>
+            <div style="text-align: center; margin: 20px 0 30px;">
+                <p style="font-size: 14px; font-weight: 600; color: var(--text-muted);">Amount to Pay</p>
+                <h1 style="font-size: 42px; font-weight: 800; color: var(--primary);" id="ptm-amt">₹0</h1>
+                <p style="font-size: 13px; font-weight: 600; color: var(--text-main); margin-top: 10px;">Paying: <b>Lucky Travels (6200871886@axl)</b></p>
             </div>
 
             <div class="card" style="border: 1px solid var(--border);">
                 <a id="ptm-upi-link" href="#" class="btn btn-outline" style="margin-bottom: 15px; border-color: var(--accent-light); color: var(--accent-light); text-decoration:none;" onclick="markUpiClicked()">
                     📱 OPEN UPI APP TO PAY
                 </a>
-                <p style="font-size:11px; text-align:center; color:var(--danger); margin-bottom:20px; display:none;" id="upi-warning">Please click 'Open UPI App' and complete payment first.</p>
+                <p style="font-size:12px; text-align:center; color:var(--danger); margin-bottom:20px; display:none; font-weight:600;" id="upi-warning">Please complete payment on UPI App first.</p>
 
-                <div style="background: var(--bg-color); padding: 15px; border-radius: 12px; border: 1px dashed var(--border);">
-                    <p style="font-size: 12px; font-weight: 700; color: var(--success); margin-bottom: 8px;">✅ Step 2: Auto-Verification</p>
-                    <p style="font-size: 11px; color: var(--text-muted); line-height: 1.5; margin-bottom: 15px;">After completing payment from your UPI app, enter your 12-digit UTR below to instantly verify and generate your ticket.</p>
+                <div style="background: var(--bg-color); padding: 20px; border-radius: 16px; border: 1px dashed var(--border);">
+                    <p style="font-size: 13px; font-weight: 700; color: var(--success); margin-bottom: 10px;">✅ Step 2: Auto-Verification</p>
+                    <p style="font-size: 12px; color: var(--text-muted); line-height: 1.6; margin-bottom: 15px;">After completing payment, enter your 12-digit UTR below to instantly verify and generate your ticket.</p>
                     
-                    <input type="text" id="manual-utr" placeholder="Enter 12-Digit UTR Number" maxlength="12" style="font-family: monospace; font-size:16px; text-align:center; letter-spacing: 2px;">
-                    <button class="btn btn-success" style="font-size:13px; margin-top:10px;" onclick="triggerEnhancedVerify()">VERIFY MY PAYMENT</button>
+                    <input type="text" id="manual-utr" placeholder="12-Digit UTR Number" maxlength="12" style="font-family: monospace; font-size:18px; text-align:center; letter-spacing: 2px;">
+                    <button class="btn btn-success" style="font-size:15px; margin-top:15px;" onclick="triggerEnhancedVerify()">VERIFY MY PAYMENT</button>
                 </div>
             </div>
             <button class="btn btn-outline" style="border:none; color:var(--danger);" onclick="closePaytm()">Cancel Payment</button>
@@ -209,8 +206,8 @@
 
         <div class="verify-box" id="ptm-verify-ui">
             <div class="spinner-blue"></div>
-            <h2 style="font-size: 18px; color: var(--accent);" id="verify-text">Connecting to Bank...</h2>
-            <p style="font-size: 12px; color: var(--text-muted); margin-top: 8px;">Please do not press back</p>
+            <h2 style="font-size: 20px; color: var(--accent);" id="verify-text">Connecting to Bank...</h2>
+            <p style="font-size: 13px; color: var(--text-muted); margin-top: 10px;">Please do not press back</p>
         </div>
     </div>
 
@@ -223,11 +220,11 @@
     <!-- 7. PROFILE -->
     <div id="view-profile" class="view-section">
         <div class="p-20">
-            <div class="card" style="text-align: center; padding: 30px 20px; margin-top: 15px;">
-                <h2 id="prof-name" style="font-size: 20px; font-weight:800;"></h2>
-                <p style="font-size: 14px; font-weight: 600; margin-top: 5px; color: var(--text-main);" id="prof-phone"></p>
-                <p style="font-size: 12px; margin-top: 5px; color: var(--text-muted);" id="prof-email"></p>
-                <button class="btn btn-outline" style="margin-top: 25px; border-color:var(--danger); color:var(--danger);" onclick="logout()">LOGOUT</button>
+            <div class="card" style="text-align: center; padding: 40px 20px; margin-top: 20px;">
+                <h2 id="prof-name" style="font-size: 24px; font-weight:800;"></h2>
+                <p style="font-size: 16px; font-weight: 600; margin-top: 8px; color: var(--text-main);" id="prof-phone"></p>
+                <p style="font-size: 14px; margin-top: 5px; color: var(--text-muted);" id="prof-email"></p>
+                <button class="btn btn-outline" style="margin-top: 35px; border-color:var(--danger); color:var(--danger);" onclick="logout()">LOGOUT ACCOUNT</button>
             </div>
         </div>
     </div>
@@ -236,15 +233,15 @@
     <div id="view-admin" class="view-section">
         <div class="p-20">
             <h2 class="title-lg" style="color: var(--primary);">Admin Portal</h2>
-            <p class="title-sm" style="margin-bottom: 20px;">Manage inventory, revenue, and bookings.</p>
+            <p class="title-sm" style="margin-bottom: 25px;">Manage inventory, revenue, and bookings.</p>
             
             <div class="stat-grid">
-                <div class="stat-box"><p style="font-size:11px; color:var(--text-muted); font-weight:700;">REVENUE</p><div class="stat-val" id="adm-rev">₹0</div></div>
-                <div class="stat-box"><p style="font-size:11px; color:var(--text-muted); font-weight:700;">BOOKINGS</p><div class="stat-val" id="adm-bks">0</div></div>
+                <div class="stat-box"><p style="font-size:12px; color:var(--text-muted); font-weight:700;">REVENUE</p><div class="stat-val" id="adm-rev">₹0</div></div>
+                <div class="stat-box"><p style="font-size:12px; color:var(--text-muted); font-weight:700;">BOOKINGS</p><div class="stat-val" id="adm-bks">0</div></div>
             </div>
 
             <div class="card" id="admin-form-card" style="border: 2px solid var(--accent-light);">
-                <h3 style="font-size: 15px; margin-bottom: 12px;" id="adm-form-title">➕ Add New Package</h3>
+                <h3 style="font-size: 16px; margin-bottom: 15px;" id="adm-form-title">➕ Add New Package</h3>
                 <input type="hidden" id="editTourId">
                 <input type="text" id="nLoc" placeholder="Location (e.g. GOA, INDIA)">
                 <input type="text" id="nTitle" placeholder="Package Name">
@@ -254,19 +251,19 @@
                 </div>
                 <textarea id="nDesc" rows="3" placeholder="Description..."></textarea>
                 
-                <div style="display:flex; gap:10px; margin-top: 12px;">
+                <div style="display:flex; gap:10px; margin-top: 15px;">
                     <button class="btn btn-paytm" id="btn-save-tour" onclick="saveTour()" style="flex:1;">PUBLISH</button>
                     <button class="btn btn-outline" id="btn-cancel-edit" onclick="resetAdminForm()" style="display:none; flex:1;">CANCEL</button>
                 </div>
             </div>
 
             <div class="card">
-                <h3 style="font-size: 15px; margin-bottom: 12px;">🛠️ Manage Packages</h3>
+                <h3 style="font-size: 16px; margin-bottom: 15px;">🛠️ Manage Packages</h3>
                 <div id="admin-pkg-list"></div>
             </div>
 
             <div class="card">
-                <h3 style="font-size: 15px; margin-bottom: 12px;">📋 Customer Bookings</h3>
+                <h3 style="font-size: 16px; margin-bottom: 15px;">📋 Customer Bookings</h3>
                 <div id="admin-bookings-table"></div>
             </div>
             
@@ -277,232 +274,31 @@
     <!-- ADMIN CANCELLATION MODAL -->
     <div class="modal-overlay" id="cancel-modal">
         <div class="modal-content">
-            <h3 style="color: var(--danger); margin-bottom: 12px; font-size:18px;">Cancel Booking</h3>
-            <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 10px;">Cancellation reason (sent to customer email):</p>
-            <textarea id="cancel-reason" rows="3" placeholder="e.g. Payment not received, or Seat unavailable."></textarea>
+            <h3 style="color: var(--danger); margin-bottom: 15px; font-size:20px;">Cancel Booking</h3>
+            <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 10px;">Cancellation reason (sent to customer email):</p>
+            <textarea id="cancel-reason" rows="4" placeholder="e.g. Payment not received, or Seat unavailable."></textarea>
             <input type="hidden" id="cancel-booking-id">
-            <div style="display:flex; gap:10px; margin-top: 15px;">
+            <div style="display:flex; gap:10px; margin-top: 20px;">
                 <button class="btn btn-danger" style="flex:1;" onclick="confirmCancellation()">CANCEL & EMAIL</button>
                 <button class="btn btn-outline" style="flex:1;" onclick="closeCancelModal()">BACK</button>
             </div>
         </div>
     </div>
 
-    <!-- BOTTOM NAV -->
-    <nav class="bottom-nav" id="bottom-nav" style="dis.bottom-nav { position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 480px; background: rgba(255,255,255,0.95); backdrop-filter: blur(15px); border-top: 1px solid var(--border); display: flex; justify-content: space-around; padding: 12px 0 15px; z-index: 200; }
-        .nav-item { display: flex; flex-direction: column; align-items: center; color: var(--text-muted); font-size: 11px; font-weight: 700; gap: 4px; cursor: pointer; transition: 0.2s; }
-        .nav-item.active { color: var(--primary); }
-    </style>
-</head>
-<body>
-
-<div class="app-container">
-    
-    <div id="loader"><div class="spinner"></div><p style="margin-top: 12px; font-weight: 700; color: var(--primary); font-size:14px;" id="loader-text">Processing...</p></div>
-
-    <!-- HEADER -->
-    <div class="header" id="main-header">
-        <div class="logo">WanderLust.</div>
-        <div style="font-size: 11px; font-weight: 700; background: var(--bg-color); padding: 8px 14px; border-radius: 20px; border: 1px solid var(--border);" id="user-greeting">Guest</div>
-    </div>
-
-    <!-- 1. AUTH -->
-    <div id="view-auth" class="view-section active">
-        <div class="p-20">
-            <h1 class="title-lg">Welcome Back</h1>
-            <p class="title-sm" style="margin-bottom: 25px;">Sign in to continue your journey.</p>
-            
-            <div class="card">
-                <div id="auth-phone-step" class="auth-step active">
-                    <input type="text" id="authPhone" placeholder="Mobile Number (10 Digits)" maxlength="10">
-                    <button class="btn btn-primary" style="margin-top: 15px;" onclick="checkAuthPhone()">CONTINUE</button>
-                </div>
-                <div id="auth-login-step" class="auth-step">
-                    <p style="font-size: 12px; font-weight: 700; color: var(--primary); margin-bottom: 10px;" id="auth-display-phone"></p>
-                    <input type="password" id="authPass" placeholder="Enter Password">
-                    <button class="btn btn-primary" style="margin-top: 15px;" onclick="processLogin()">LOGIN</button>
-                    <p style="text-align: center; font-size: 12px; color: var(--accent); margin-top: 15px; cursor: pointer;" onclick="switchAuthStep('auth-forgot-step')">Forgot Password?</p>
-                </div>
-                <div id="auth-signup-step" class="auth-step">
-                    <p style="font-size: 12px; font-weight: 700; color: var(--success); margin-bottom: 10px;">Create Account</p>
-                    <input type="text" id="regName" placeholder="Full Name">
-                    <input type="email" id="regEmail" placeholder="Email Address">
-                    <input type="password" id="regPass" placeholder="Create Password">
-                    <button class="btn btn-paytm" style="margin-top: 15px;" onclick="processRegister()">REGISTER</button>
-                </div>
-                <div id="auth-forgot-step" class="auth-step">
-                    <p style="font-size: 12px; font-weight: 700; color: var(--danger); margin-bottom: 10px;">Reset Password</p>
-                    <input type="email" id="forgotEmail" placeholder="Enter Registered Email">
-                    <button class="btn btn-primary" style="margin-top: 15px;" onclick="processForgotPass()">RESET VIA EMAIL</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- 2. HOME -->
-    <div id="view-home" class="view-section">
-        <div class="p-20" style="padding-bottom: 0;"><h1 class="title-lg">Find Your Next<br>Great Adventure.</h1></div>
-        <div class="p-20" id="tours-list"></div>
-    </div>
-
-    <!-- 3. DETAILS -->
-    <div id="view-details" class="view-section" style="padding-bottom: 100px;">
-        <div style="position: relative; height: 300px;">
-            <button onclick="switchTab('home')" style="position: absolute; top: 15px; left: 15px; width: 40px; height: 40px; border-radius: 50%; border: none; background: rgba(255,255,255,0.9); font-size: 18px; font-weight: bold; cursor: pointer; z-index: 10;">←</button>
-            <img id="det-img" src="" style="width: 100%; height: 100%; object-fit: cover; border-bottom-left-radius: 30px; border-bottom-right-radius: 30px;">
-        </div>
-        <div style="padding: 25px 20px; margin-top: -30px; position: relative; background: var(--bg-color); border-top-left-radius: 30px; border-top-right-radius: 30px;">
-            <div class="tour-loc" id="det-loc"></div>
-            <h1 class="tour-title" id="det-title" style="font-size: 24px; font-weight:800;"></h1>
-            <div class="tour-price" style="margin-top: 8px; color: var(--primary); font-size: 22px; font-weight:800;" id="det-price"></div>
-            <p id="det-desc" style="font-size: 13px; line-height: 1.7; color: var(--text-muted); margin: 15px 0;"></p>
-            <button class="btn btn-primary" onclick="goToSelection()">CHECK AVAILABILITY</button>
-        </div>
-    </div>
-
-    <!-- 4. SELECTION -->
-    <div id="view-selection" class="view-section">
-        <div class="p-20">
-            <button onclick="switchTab('details')" style="width: 35px; height: 35px; border-radius: 10px; border: 1px solid var(--border); background: var(--card-bg); font-weight: bold; cursor: pointer; margin-bottom: 15px;">←</button>
-            <h2 class="title-lg" style="font-size:22px;">Customize Trip</h2>
-            
-            <div class="card" style="border-left: 5px solid var(--accent-light); margin-top: 15px;">
-                <b id="sel-title" style="font-size: 15px;"></b><br>
-                <span id="sel-price-text" style="font-size: 12px; color: var(--text-muted);"></span>
-            </div>
-
-            <h3 class="title-sm" style="margin-top: 20px;">Travel Date</h3>
-            <input type="date" id="bookDate" min="" required>
-
-            <h3 class="title-sm" style="margin-top: 15px;">Guests</h3>
-            <div style="display: flex; gap: 15px; align-items: center; margin-top: 5px;">
-                <button class="btn btn-outline" style="width: 50px; padding: 10px; font-size: 20px;" onclick="changeGuests(-1)">-</button>
-                <input type="number" id="bookGuests" value="1" min="1" readonly style="width: 60px; text-align: center; margin: 0; font-size: 18px; font-weight: 800; border:none; background:transparent;">
-                <button class="btn btn-outline" style="width: 50px; padding: 10px; font-size: 20px;" onclick="changeGuests(1)">+</button>
-            </div>
-
-            <div class="card" style="margin-top: 25px; border: 1.5px dashed var(--border);">
-                <div style="display: flex; justify-content: space-between; font-size: 18px; font-weight: 800;"><span>Total Cost</span><span style="color: var(--accent);" id="sel-total">₹0</span></div>
-            </div>
-
-            <button class="btn btn-primary" onclick="openPaytmGateway()">PROCEED TO CHECKOUT</button>
-        </div>
-    </div>
-
-    <!-- 5. ENHANCED PAYTM VERIFICATION GATEWAY -->
-    <div id="view-paytm" class="paytm-overlay">
-        <div class="paytm-header">🔒 Paytm Secure Payment</div>
-        
-        <div class="p-20" id="ptm-main-ui" style="flex:1; overflow-y:auto;">
-            <div style="text-align: center; margin: 15px 0 25px;">
-                <p style="font-size: 13px; font-weight: 600; color: var(--text-muted);">Amount to Pay</p>
-                <h1 style="font-size: 36px; font-weight: 800; color: var(--primary);" id="ptm-amt">₹0</h1>
-                <p style="font-size: 12px; font-weight: 600; color: var(--text-main); margin-top: 8px;">Paying: <b>Lucky Travels (6200871886@axl)</b></p>
-            </div>
-
-            <div class="card" style="border: 1px solid var(--border);">
-                <a id="ptm-upi-link" href="#" class="btn btn-outline" style="margin-bottom: 15px; border-color: var(--accent-light); color: var(--accent-light); text-decoration:none;" onclick="markUpiClicked()">
-                    📱 OPEN UPI APP TO PAY
-                </a>
-                <p style="font-size:11px; text-align:center; color:var(--danger); margin-bottom:20px; display:none;" id="upi-warning">Please click 'Open UPI App' and complete payment first.</p>
-
-                <div style="background: var(--bg-color); padding: 15px; border-radius: 12px; border: 1px dashed var(--border);">
-                    <p style="font-size: 12px; font-weight: 700; color: var(--success); margin-bottom: 8px;">✅ Step 2: Auto-Verification</p>
-                    <p style="font-size: 11px; color: var(--text-muted); line-height: 1.5; margin-bottom: 15px;">After completing payment from your UPI app, enter your 12-digit UTR below to instantly verify and generate your ticket.</p>
-                    
-                    <input type="text" id="manual-utr" placeholder="Enter 12-Digit UTR Number" maxlength="12" style="font-family: monospace; font-size:16px; text-align:center; letter-spacing: 2px;">
-                    <button class="btn btn-success" style="font-size:13px; margin-top:10px;" onclick="triggerEnhancedVerify()">VERIFY MY PAYMENT</button>
-                </div>
-            </div>
-            <button class="btn btn-outline" style="border:none; color:var(--danger);" onclick="closePaytm()">Cancel Payment</button>
-        </div>
-
-        <div class="verify-box" id="ptm-verify-ui">
-            <div class="spinner-blue"></div>
-            <h2 style="font-size: 18px; color: var(--accent);" id="verify-text">Connecting to Bank...</h2>
-            <p style="font-size: 12px; color: var(--text-muted); margin-top: 8px;">Please do not press back</p>
-        </div>
-    </div>
-
-    <!-- 6. MY TRIPS -->
-    <div id="view-bookings" class="view-section">
-        <div class="p-20"><h2 class="title-lg">My Trips</h2></div>
-        <div class="p-20" id="my-bookings-list" style="padding-top:0;"></div>
-    </div>
-
-    <!-- 7. PROFILE -->
-    <div id="view-profile" class="view-section">
-        <div class="p-20">
-            <div class="card" style="text-align: center; padding: 30px 20px; margin-top: 15px;">
-                <h2 id="prof-name" style="font-size: 20px; font-weight:800;"></h2>
-                <p style="font-size: 14px; font-weight: 600; margin-top: 5px; color: var(--text-main);" id="prof-phone"></p>
-                <p style="font-size: 12px; margin-top: 5px; color: var(--text-muted);" id="prof-email"></p>
-                <button class="btn btn-outline" style="margin-top: 25px; border-color:var(--danger); color:var(--danger);" onclick="logout()">LOGOUT</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- 8. ADMIN DASHBOARD -->
-    <div id="view-admin" class="view-section">
-        <div class="p-20">
-            <h2 class="title-lg" style="color: var(--primary);">Admin Portal</h2>
-            <p class="title-sm" style="margin-bottom: 20px;">Manage inventory, revenue, and bookings.</p>
-            
-            <div class="stat-grid">
-                <div class="stat-box"><p style="font-size:11px; color:var(--text-muted); font-weight:700;">REVENUE</p><div class="stat-val" id="adm-rev">₹0</div></div>
-                <div class="stat-box"><p style="font-size:11px; color:var(--text-muted); font-weight:700;">BOOKINGS</p><div class="stat-val" id="adm-bks">0</div></div>
-            </div>
-
-            <div class="card" id="admin-form-card" style="border: 2px solid var(--accent-light);">
-                <h3 style="font-size: 15px; margin-bottom: 12px;" id="adm-form-title">➕ Add New Package</h3>
-                <input type="hidden" id="editTourId">
-                <input type="text" id="nLoc" placeholder="Location (e.g. GOA, INDIA)">
-                <input type="text" id="nTitle" placeholder="Package Name">
-                <input type="text" id="nImg" placeholder="Image URL (Unsplash link)">
-                <div style="display: flex; gap: 10px;">
-                    <input type="number" id="nPrice" placeholder="Price (₹)">
-                </div>
-                <textarea id="nDesc" rows="3" placeholder="Description..."></textarea>
-                
-                <div style="display:flex; gap:10px; margin-top: 12px;">
-                    <button class="btn btn-paytm" id="btn-save-tour" onclick="saveTour()" style="flex:1;">PUBLISH</button>
-                    <button class="btn btn-outline" id="btn-cancel-edit" onclick="resetAdminForm()" style="display:none; flex:1;">CANCEL</button>
-                </div>
-            </div>
-
-            <div class="card">
-                <h3 style="font-size: 15px; margin-bottom: 12px;">🛠️ Manage Packages</h3>
-                <div id="admin-pkg-list"></div>
-            </div>
-
-            <div class="card">
-                <h3 style="font-size: 15px; margin-bottom: 12px;">📋 Customer Bookings</h3>
-                <div id="admin-bookings-table"></div>
-            </div>
-            
-            <button class="btn btn-outline" style="border-color: var(--danger); color: var(--danger);" onclick="logout()">LOGOUT ADMIN</button>
-        </div>
-    </div>
-
-    <!-- ADMIN CANCELLATION MODAL -->
-    <div class="modal-overlay" id="cancel-modal">
-        <div class="modal-content">
-            <h3 style="color: var(--danger); margin-bottom: 12px; font-size:18px;">Cancel Booking</h3>
-            <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 10px;">Cancellation reason (sent to customer email):</p>
-            <textarea id="cancel-reason" rows="3" placeholder="e.g. Payment not received, or Seat unavailable."></textarea>
-            <input type="hidden" id="cancel-booking-id">
-            <div style="display:flex; gap:10px; margin-top: 15px;">
-                <button class="btn btn-danger" style="flex:1;" onclick="confirmCancellation()">CANCEL & EMAIL</button>
-                <button class="btn btn-outline" style="flex:1;" onclick="closeCancelModal()">BACK</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- BOTTOM NAV -->
+    <!-- FIX: MODERN SVG BOTTOM NAVIGATION -->
     <nav class="bottom-nav" id="bottom-nav" style="display:none;">
-        <div class="nav-item active" onclick="switchTab('home')" id="nav-home">🌍<span>Explore</span></div>
-        <div class="nav-item" onclick="switchTab('bookings')" id="nav-bookings">🎟️<span>Tickets</span></div>
-        <div class="nav-item" onclick="switchTab('profile')" id="nav-profile">👤<span>Profile</span></div>
+        <div class="nav-item active" onclick="switchTab('home')" id="nav-home">
+            <svgclass="nav-icon" viewBox="0 0 24 24"><path d="M12 2L2 12h3v8h6v-6h2v6h6v-8h3L12 2z"/></svg>
+            <span>Explore</span>
+        </div>
+        <div class="nav-item" onclick="switchTab('bookings')" id="nav-bookings">
+            <svg class="nav-icon" viewBox="0 0 24 24"><path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58.55 0 1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z"/></svg>
+            <span>Tickets</span>
+        </div>
+        <div class="nav-item" onclick="switchTab('profile')" id="nav-profile">
+            <svg class="nav-icon" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+            <span>Profile</span>
+        </div>
     </nav>
 </div>
 
@@ -512,22 +308,35 @@
     const ADMIN_UPI = "6200871886@axl"; 
     const ADMIN_EMAIL = "luckyrajgupta1994@gmail.com";
 
+    // FIX: Using highly stable image links to prevent white box error.
     const defaultTours = [
         { id: 't1', loc: 'MALDIVES', title: 'Luxury Water Villa', price: 45000, img: 'https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&w=600&q=80', desc: 'Premium water villa with scuba diving.' },
-        { id: 't2', loc: 'MANALI, INDIA', title: 'Snow Mountain Adv', price: 12500, img: 'https://images.unsplash.com/photo-1605649487212-4d4b85c18e93?auto=format&fit=crop&w=600&q=80', desc: 'Thrilling adventure in the Himalayas.' }
+        { id: 't2', loc: 'MANALI, INDIA', title: 'Snow Mountain Adv', price: 12500, img: 'https://images.unsplash.com/photo-1595815771614-ade9d652a65d?auto=format&fit=crop&w=600&q=80', desc: 'Thrilling adventure in the Himalayas.' }
     ];
 
-    let tours = JSON.parse(localStorage.getItem('wl_tours_f')) || defaultTours;
-    let users = JSON.parse(localStorage.getItem('wl_users_f')) || [];
-    let bookings = JSON.parse(localStorage.getItem('wl_bookings_f')) || [];
+    let tours = JSON.parse(localStorage.getItem('wl_tours_fix')) || defaultTours;
+    let users = JSON.parse(localStorage.getItem('wl_users_fix')) || [];
+    let bookings = JSON.parse(localStorage.getItem('wl_bookings_fix')) || [];
     
     let currentUser = null, isAdmin = false, activeTourId = null;
     let tempBooking = { guests: 1, total: 0, date: '' };
     let authTempPhone = '';
     let upiClicked = false;
 
-    if(!localStorage.getItem('wl_tours_f')) localStorage.setItem('wl_tours_f', JSON.stringify(tours));
+    if(!localStorage.getItem('wl_tours_fix')) localStorage.setItem('wl_tours_fix', JSON.stringify(tours));
     document.getElementById("bookDate").setAttribute('min', new Date().toISOString().split('T')[0]);
+
+    // FIX: Core UI update function for Header Greeting.
+    function updateHeaderGreeting() {
+        if (isAdmin) {
+            document.getElementById('user-greeting').innerText = "Admin Panel";
+        } else if (currentUser) {
+            let u = users.find(x => x.phone === currentUser);
+            document.getElementById('user-greeting').innerText = u ? "Hi, " + u.name.split(' ')[0] : "User";
+        } else {
+            document.getElementById('user-greeting').innerText = "Guest";
+        }
+    }
 
     function switchTab(tabId) {
         document.querySelectorAll('.view-section').forEach(v => v.classList.remove('active'));
@@ -537,13 +346,26 @@
         document.getElementById('bottom-nav').style.display = showNavTabs.includes(tabId) ? 'flex' : 'none';
         
         if(tabId === 'admin') {
-            document.getElementById('view-admin').classList.add('active'); document.getElementById('bottom-nav').style.display = 'none'; renderAdmin();
+            document.getElementById('view-admin').classList.add('active'); 
+            document.getElementById('bottom-nav').style.display = 'none'; 
+            renderAdmin();
         } else {
             document.getElementById('view-' + tabId).classList.add('active');
             if(document.getElementById('nav-' + tabId)) document.getElementById('nav-' + tabId).classList.add('active');
-            if(tabId === 'home') renderHome(); if(tabId === 'bookings') renderBookings(); if(tabId === 'profile') renderProfileState();
-            if(tabId === 'auth') { document.getElementById('bottom-nav').style.display = 'none'; document.getElementById('main-header').style.display = 'none'; } else { document.getElementById('main-header').style.display = 'flex'; }
-        } window.scrollTo(0,0);
+            
+            if(tabId === 'home') renderHome(); 
+            if(tabId === 'bookings') renderBookings(); 
+            if(tabId === 'profile') renderProfileState();
+            
+            if(tabId === 'auth') { 
+                document.getElementById('bottom-nav').style.display = 'none'; 
+                document.getElementById('main-header').style.display = 'none'; 
+            } else { 
+                document.getElementById('main-header').style.display = 'flex'; 
+            }
+        } 
+        updateHeaderGreeting(); // FIX: Call this every time tab switches
+        window.scrollTo(0,0);
     }
 
     function showLoader(text, time, callback) {
@@ -551,7 +373,6 @@
         setTimeout(() => { document.getElementById('loader').style.display = 'none'; if(callback) callback(); }, time);
     }
 
-    // BACKGROUND EMAIL FUNCTION
     function sendBackgroundEmail(subject, dataObj) {
         fetch(`https://formsubmit.co/ajax/${ADMIN_EMAIL}`, {
             method: "POST", headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
@@ -559,7 +380,7 @@
         }).catch(e => console.log("Email task done."));
     }
 
-    // AUTH
+    // AUTHENTICATION
     function switchAuthStep(stepId) { document.querySelectorAll('.auth-step').forEach(s => s.classList.remove('active')); document.getElementById(stepId).classList.add('active'); }
     function checkAuthPhone() {
         let phone = document.getElementById('authPhone').value; if(phone.length !== 10) return alert("Enter valid 10-digit number.");
@@ -568,34 +389,37 @@
         let user = users.find(u => u.phone === phone);
         if(user) { document.getElementById('auth-display-phone').innerText = "+91 " + phone; switchAuthStep('auth-login-step'); } else { switchAuthStep('auth-signup-step'); }
     }
+    
     function processLogin() {
         let pass = document.getElementById('authPass').value; if(!pass) return alert("Enter password");
-        if(authTempPhone === ADMIN_PHONE && pass === ADMIN_PASS) { isAdmin = true; currentUser = null; switchTab('admin'); return; }
+        if(authTempPhone === ADMIN_PHONE && pass === ADMIN_PASS) { 
+            isAdmin = true; currentUser = null; switchTab('admin'); 
+            return; 
+        }
         let user = users.find(u => u.phone === authTempPhone);
-        if(user && user.pass === pass) { currentUser = authTempPhone; isAdmin = false; switchTab('home'); } else { alert("Incorrect Password!"); }
+        if(user && user.pass === pass) { 
+            currentUser = authTempPhone; isAdmin = false; 
+            switchTab('home'); 
+        } else { alert("Incorrect Password!"); }
     }
+    
     function processRegister() {
         let name = document.getElementById('regName').value, email = document.getElementById('regEmail').value, pass = document.getElementById('regPass').value;
         if(!name || !email || !pass) return alert("Fill all details.");
-        users.push({ phone: authTempPhone, name, email, pass }); localStorage.setItem('wl_users_f', JSON.stringify(users));
+        users.push({ phone: authTempPhone, name, email, pass }); localStorage.setItem('wl_users_fix', JSON.stringify(users));
         showLoader("Creating Account...", 1000, () => {
             sendBackgroundEmail("🔔 New User Registration", { Name: name, Phone: authTempPhone, Email: email });
             currentUser = authTempPhone; isAdmin = false; switchTab('home');
         });
     }
+    
     function processForgotPass() {
         let email = document.getElementById('forgotEmail').value;
         let user = users.find(u => u.phone === authTempPhone && u.email === email);
         if(user) {
-            user.pass = '123456'; localStorage.setItem('wl_users_f', JSON.stringify(users));
-            // Send email to user
+            user.pass = '123456'; localStorage.setItem('wl_users_fix', JSON.stringify(users));
             let subject = "Password Reset - WanderLust";
-            let body = `Dear ${user.name},
-
-Your password has been reset.
-New Password: 123456
-
-Please login and change it.`;
+            let body = `Dear ${user.name},\n\nYour password has been reset.\nNew Password: 123456\n\nPlease login and change it.`;
             window.location.href = `mailto:${user.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
             alert("Password Reset to '123456'. An email draft has been opened.");
             switchAuthStep('auth-login-step');
@@ -603,12 +427,21 @@ Please login and change it.`;
             alert("Email does not match our records for this number.");
         }
     }
+    
     function logout() { currentUser = null; isAdmin = false; document.getElementById('authPhone').value=''; document.getElementById('authPass').value=''; switchAuthStep('auth-phone-step'); switchTab('auth'); }
-    function renderProfileState() { let user = users.find(u => u.phone === currentUser); document.getElementById('prof-name').innerText = user.name; document.getElementById('prof-phone').innerText = "+91 " + user.phone; document.getElementById('prof-email').innerText = user.email || "";}
+    
+    function renderProfileState() { 
+        if(currentUser) {
+            let user = users.find(u => u.phone === currentUser); 
+            document.getElementById('prof-name').innerText = user.name; 
+            document.getElementById('prof-phone').innerText = "+91 " + user.phone; 
+            document.getElementById('prof-email').innerText = user.email || "";
+        }
+    }
 
     // HOME & DETAILS
     function renderHome() {
-        let h = ''; tours.forEach(t => { h += `<div class="tour-card" onclick="openDetails('${t.id}')"><img src="${t.img}" class="tour-img"><div class="tour-info"><div class="tour-loc">${t.loc}</div><div class="tour-title" style="font-size:18px; font-weight:800; margin-bottom:5px;">${t.title}</div><div style="color:var(--primary); font-size:18px; font-weight:800;">₹${t.price.toLocaleString()}</div></div></div>`; }); 
+        let h = ''; tours.forEach(t => { h += `<div class="tour-card" onclick="openDetails('${t.id}')"><img src="${t.img}" class="tour-img" onerror="this.src='https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=600&q=80'"><div class="tour-info"><div class="tour-loc">${t.loc}</div><div class="tour-title" style="font-size:20px; font-weight:800; margin-bottom:5px;">${t.title}</div><div style="color:var(--primary); font-size:20px; font-weight:800;">₹${t.price.toLocaleString()}</div></div></div>`; }); 
         document.getElementById('tours-list').innerHTML = h;
     }
     function openDetails(id) {
@@ -623,7 +456,7 @@ Please login and change it.`;
     function changeGuests(val) { let newG = tempBooking.guests + val; if(newG >= 1 && newG <= 10) { tempBooking.guests = newG; document.getElementById('bookGuests').value = newG; updateCostCalc(); } }
     function updateCostCalc() { let t = tours.find(x => x.id === activeTourId); tempBooking.total = t.price * tempBooking.guests; document.getElementById('sel-total').innerText = `₹${tempBooking.total.toLocaleString()}`; }
 
-    // ENHANCED PAYTM AUTO VERIFY
+    // PAYTM AUTO VERIFY
     function openPaytmGateway() {
         let d = document.getElementById('bookDate').value; if(!d) return alert("Select travel date."); tempBooking.date = d;
         let u = users.find(x => x.phone === currentUser);
@@ -642,17 +475,13 @@ Please login and change it.`;
     }
     
     function markUpiClicked() {
-        upiClicked = true;
-        document.getElementById('upi-warning').style.display = 'none';
+        upiClicked = true; document.getElementById('upi-warning').style.display = 'none';
     }
     
     function closePaytm() { document.getElementById('view-paytm').style.display = 'none'; }
     
     function triggerEnhancedVerify() {
-        if(!upiClicked) {
-            document.getElementById('upi-warning').style.display = 'block';
-            return;
-        }
+        if(!upiClicked) { document.getElementById('upi-warning').style.display = 'block'; return; }
         
         let inputUtr = document.getElementById('manual-utr').value;
         if(inputUtr.length !== 12 || isNaN(inputUtr)) {
@@ -679,43 +508,41 @@ Please login and change it.`;
         let u = users.find(x => x.phone === currentUser); let t = tours.find(x => x.id === activeTourId);
 
         bookings.push({ id: bkId, phone: currentUser, name: u.name, email: u.email, tourTitle: t.title, date: tempBooking.date, guests: tempBooking.guests, total: tempBooking.total, status: 'Confirmed', txnId: verifiedUtr, cancelReason: '' });
-        localStorage.setItem('wl_bookings_f', JSON.stringify(bookings));
+        localStorage.setItem('wl_bookings_fix', JSON.stringify(bookings));
 
         sendBackgroundEmail(`💰 BOOKING CONFIRMED - ${bkId}`, { Customer: u.name, Phone: u.phone, Tour: t.title, Date: tempBooking.date, Total: `Rs. ${tempBooking.total}`, UTR_VERIFIED: verifiedUtr });
 
-        alert(`✅ Payment Verified Successfully!
-
-Your E-Ticket is generated in 'My Trips'.`);
+        alert(`✅ Payment Verified Successfully!\n\nYour E-Ticket is generated in 'My Trips'.`);
         switchTab('bookings');
     }
 
     // USER BOOKINGS
     function renderBookings() {
         let myBkgs = bookings.filter(b => b.phone === currentUser);
-        let h = ''; if(myBkgs.length === 0) h = '<p style="text-align:center; color:gray; font-size:13px; margin-top:20px;">No trips found.</p>';
+        let h = ''; if(myBkgs.length === 0) h = '<p style="text-align:center; color:gray; font-size:14px; margin-top:20px;">No trips found.</p>';
         
         myBkgs.reverse().forEach(b => {
             let isCancelled = b.status === 'Cancelled';
             let badgeBg = isCancelled ? 'var(--danger)' : 'var(--success)';
             
             h += `<div class="card" style="border: 2px solid ${badgeBg}; position:relative; overflow:hidden;">
-                <div style="background:${badgeBg}; color:white; padding:4px 12px; position:absolute; top:0; right:0; border-bottom-left-radius:10px; font-size:10px; font-weight:800;">${b.status.toUpperCase()}</div>
-                <h3 style="font-size:16px; margin-bottom:12px; padding-right:70px; margin-top:2px;">${b.tourTitle}</h3>
-                <div style="background:#f1f5f9; padding:10px; border-radius:8px; margin-bottom:12px; font-size:12px; line-height:1.6;">
+                <div style="background:${badgeBg}; color:white; padding:6px 14px; position:absolute; top:0; right:0; border-bottom-left-radius:12px; font-size:11px; font-weight:800;">${b.status.toUpperCase()}</div>
+                <h3 style="font-size:18px; margin-bottom:12px; padding-right:80px; margin-top:2px;">${b.tourTitle}</h3>
+                <div style="background:#f1f5f9; padding:12px; border-radius:10px; margin-bottom:15px; font-size:13px; line-height:1.6;">
                     <b>Date:</b> ${b.date} &nbsp;|&nbsp; <b>Amount:</b> ₹${b.total.toLocaleString()}
                 </div>`;
             
-            if(isCancelled) { h += `<div style="background: #fef2f2; padding: 10px; border-radius: 6px; border: 1px dashed var(--danger); font-size:11px; color:var(--danger); font-weight:600; margin-bottom:12px;">⚠️ Reason: ${b.cancelReason}</div>`; }
+            if(isCancelled) { h += `<div style="background: #fef2f2; padding: 12px; border-radius: 8px; border: 1px dashed var(--danger); font-size:12px; color:var(--danger); font-weight:600; margin-bottom:15px;">⚠️ Reason: ${b.cancelReason}</div>`; }
                 
             h += `<div style="display:flex; justify-content:space-between; align-items:flex-end;">
-                    <div><span style="font-size:9px; color:var(--text-muted);">BOOKING ID</span><br><b style="font-size:12px;">${b.id}</b></div>
-                    <div><span style="font-size:9px; color:var(--text-muted);">UTR REF</span><br><b style="font-size:12px; color:var(--accent-light);">${b.txnId}</b></div>
+                    <div><span style="font-size:10px; color:var(--text-muted);">BOOKING ID</span><br><b style="font-size:14px;">${b.id}</b></div>
+                    <div><span style="font-size:10px; color:var(--text-muted);">UTR REF</span><br><b style="font-size:14px; color:var(--accent-light);">${b.txnId}</b></div>
                 </div>
             </div>`;
         }); document.getElementById('my-bookings-list').innerHTML = h;
     }
 
-    // --- ADMIN PANEL FUNCTIONS ---
+    // ADMIN PANEL
     function saveTour() {
         let loc = document.getElementById('nLoc').value, title = document.getElementById('nTitle').value, img = document.getElementById('nImg').value, price = parseInt(document.getElementById('nPrice').value), desc = document.getElementById('nDesc').value;
         let eId = document.getElementById('editTourId').value;
@@ -729,35 +556,20 @@ Your E-Ticket is generated in 'My Trips'.`);
             tours.push({ id: 't'+Date.now(), loc, title, img, price, desc });
             alert("✅ New Package Added!");
         }
-        localStorage.setItem('wl_tours_f', JSON.stringify(tours));
+        localStorage.setItem('wl_tours_fix', JSON.stringify(tours));
         resetAdminForm(); renderAdmin();
     }
     
     function editTour(id) {
         let t = tours.find(x => x.id === id);
         if(t) {
-            document.getElementById('editTourId').value = t.id;
-            document.getElementById('nLoc').value = t.loc; document.getElementById('nTitle').value = t.title; document.getElementById('nImg').value = t.img;
-            document.getElementById('nPrice').value = t.price; document.getElementById('nDesc').value = t.desc;
-            
-            document.getElementById('adm-form-title').innerText = "✏️ Edit Package";
-            document.getElementById('btn-save-tour').innerText = "UPDATE PACKAGE";
-            document.getElementById('btn-cancel-edit').style.display = "block";
-            window.scrollTo(0,0);
+            document.getElementById('editTourId').value = t.id; document.getElementById('nLoc').value = t.loc; document.getElementById('nTitle').value = t.title; document.getElementById('nImg').value = t.img; document.getElementById('nPrice').value = t.price; document.getElementById('nDesc').value = t.desc;
+            document.getElementById('adm-form-title').innerText = "✏️ Edit Package"; document.getElementById('btn-save-tour').innerText = "UPDATE PACKAGE"; document.getElementById('btn-cancel-edit').style.display = "block"; window.scrollTo(0,0);
         }
     }
 
-    function resetAdminForm() {
-        document.getElementById('editTourId').value = '';
-        document.getElementById('nLoc').value=''; document.getElementById('nTitle').value=''; document.getElementById('nImg').value=''; 
-        document.getElementById('nPrice').value=''; document.getElementById('nDesc').value='';
-        document.getElementById('adm-form-title').innerText = "➕ Add New Package";
-        document.getElementById('btn-save-tour').innerText = "PUBLISH";
-        document.getElementById('btn-cancel-edit').style.display = "none";
-    }
-
-    function delTour(id) { if(confirm("Delete this package?")) { tours = tours.filter(t => t.id !== id); localStorage.setItem('wl_tours_f', JSON.stringify(tours)); renderAdmin(); } }
-
+    function resetAdminForm() { document.getElementById('editTourId').value = ''; document.getElementById('nLoc').value=''; document.getElementById('nTitle').value=''; document.getElementById('nImg').value=''; document.getElementById('nPrice').value=''; document.getElementById('nDesc').value=''; document.getElementById('adm-form-title').innerText = "➕ Add New Package"; document.getElementById('btn-save-tour').innerText = "PUBLISH"; document.getElementById('btn-cancel-edit').style.display = "none"; }
+    function delTour(id) { if(confirm("Delete this package?")) { tours = tours.filter(t => t.id !== id); localStorage.setItem('wl_tours_fix', JSON.stringify(tours)); renderAdmin(); } }
     function openCancelModal(bkId) { document.getElementById('cancel-booking-id').value = bkId; document.getElementById('cancel-reason').value = ''; document.getElementById('cancel-modal').style.display = 'flex'; }
     function closeCancelModal() { document.getElementById('cancel-modal').style.display = 'none'; }
     
@@ -768,17 +580,12 @@ Your E-Ticket is generated in 'My Trips'.`);
         let idx = bookings.findIndex(b => b.id === bkId);
         if(idx > -1) {
             bookings[idx].status = 'Cancelled'; bookings[idx].cancelReason = reason;
-            localStorage.setItem('wl_bookings_f', JSON.stringify(bookings));
+            localStorage.setItem('wl_bookings_fix', JSON.stringify(bookings));
             
             let bk = bookings[idx];
             if(bk.email) {
                 let subject = `IMPORTANT: Trip Cancelled - Ref ${bk.txnId}`;
-                let body = `Dear ${bk.name},
-
-Your trip for ${bk.tourTitle} on ${bk.date} is CANCELLED.
-Reason: ${reason}
-
-Regards, WanderLust.`;
+                let body = `Dear ${bk.name},\n\nYour trip for ${bk.tourTitle} on ${bk.date} is CANCELLED.\nReason: ${reason}\n\nRegards, WanderLust.`;
                 window.location.href = `mailto:${bk.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
             } else { alert("Cancelled! (Customer has no email)."); }
             closeCancelModal(); renderAdmin();
@@ -788,43 +595,32 @@ Regards, WanderLust.`;
     function renderAdmin() {
         let totalRev = 0; let totalBk = bookings.length;
         bookings.forEach(b => { if(b.status === 'Confirmed') totalRev += b.total; });
-        document.getElementById('adm-rev').innerText = `₹${totalRev.toLocaleString()}`;
-        document.getElementById('adm-bks').innerText = totalBk;
+        document.getElementById('adm-rev').innerText = `₹${totalRev.toLocaleString()}`; document.getElementById('adm-bks').innerText = totalBk;
 
         let phtml = '';
         tours.forEach(t => { 
-            phtml += `<div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border); padding:12px 0;">
-                <div><b style="font-size:13px;">${t.title}</b><br><span style="font-size:11px; color:var(--accent); font-weight:700;">₹${t.price}</span></div>
-                <div style="display:flex; gap:6px;">
-                    <button class="btn btn-outline" style="width:auto; padding:6px 10px; font-size:11px;" onclick="editTour('${t.id}')">Edit</button>
-                    <button class="btn btn-danger" style="width:auto; padding:6px 10px; font-size:11px;" onclick="delTour('${t.id}')">Del</button>
+            phtml += `<div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border); padding:15px 0;">
+                <div><b style="font-size:14px;">${t.title}</b><br><span style="font-size:12px; color:var(--accent); font-weight:700;">₹${t.price}</span></div>
+                <div style="display:flex; gap:8px;">
+                    <button class="btn btn-outline" style="width:auto; padding:8px 12px; font-size:12px;" onclick="editTour('${t.id}')">Edit</button>
+                    <button class="btn btn-danger" style="width:auto; padding:8px 12px; font-size:12px;" onclick="delTour('${t.id}')">Del</button>
                 </div>
             </div>`; 
-        });
-        document.getElementById('admin-pkg-list').innerHTML = phtml || '<p style="font-size:11px; color:gray;">No packages.</p>';
+        }); document.getElementById('admin-pkg-list').innerHTML = phtml || '<p style="font-size:12px; color:gray;">No packages.</p>';
 
         let bhtml = '';
         bookings.slice().reverse().forEach(b => {
             let badge = b.status === 'Confirmed' ? '<span style="color:var(--success); font-weight:800;">Confirmed</span>' : '<span style="color:var(--danger); font-weight:800;">Cancelled</span>';
-            
-            bhtml += `<div style="border:1px solid var(--border); padding:12px; border-radius:10px; margin-bottom:12px; background:var(--card-bg);">
-                <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
-                    <b style="font-size:13px; color:var(--primary);">${b.name} <span style="font-size:10px; color:var(--text-muted); font-weight:500;">(${b.phone})</span></b>
+            bhtml += `<div style="border:1px solid var(--border); padding:15px; border-radius:12px; margin-bottom:15px; background:var(--card-bg);">
+                <div style="display:flex; justify-content:space-between; margin-bottom:10px;">
+                    <b style="font-size:14px; color:var(--primary);">${b.name} <span style="font-size:11px; color:var(--text-muted); font-weight:500;">(${b.phone})</span></b>
                     ${badge}
                 </div>
-                <div style="font-size:11px; color:var(--text-muted); margin-bottom:10px; line-height:1.5;">
-                    <b>Tour:</b> ${b.tourTitle} | ${b.date}<br>
-                    <b>Amt:</b> ₹${b.total} | <b>UTR:</b> ${b.txnId}
-                </div>`;
-            
-            if(b.status === 'Confirmed') {
-                bhtml += `<button class="btn btn-outline" style="width:100%; padding:8px; font-size:11px; border-color:var(--danger); color:var(--danger);" onclick="openCancelModal('${b.id}')">Cancel Booking & Email User</button>`;
-            } else {
-                bhtml += `<div style="font-size:10px; color:var(--danger); background:#fef2f2; padding:8px; border-radius:6px;"><b>Reason:</b> ${b.cancelReason}</div>`;
-            }
+                <div style="font-size:12px; color:var(--text-muted); margin-bottom:12px; line-height:1.6;"><b>Tour:</b> ${b.tourTitle} | ${b.date}<br><b>Amt:</b> ₹${b.total} | <b>UTR:</b> ${b.txnId}</div>`;
+            if(b.status === 'Confirmed') { bhtml += `<button class="btn btn-outline" style="width:100%; padding:10px; font-size:12px; border-color:var(--danger); color:var(--danger);" onclick="openCancelModal('${b.id}')">Cancel Booking & Email User</button>`;
+            } else { bhtml += `<div style="font-size:11px; color:var(--danger); background:#fef2f2; padding:10px; border-radius:8px;"><b>Reason:</b> ${b.cancelReason}</div>`; }
             bhtml += `</div>`;
-        });
-        document.getElementById('admin-bookings-table').innerHTML = bhtml || '<p style="text-align:center; padding: 15px; font-size:12px;">No bookings yet.</p>';
+        }); document.getElementById('admin-bookings-table').innerHTML = bhtml || '<p style="text-align:center; padding: 15px; font-size:13px;">No bookings yet.</p>';
     }
 
     switchTab('auth');
